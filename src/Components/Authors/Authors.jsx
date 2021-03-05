@@ -1,0 +1,34 @@
+import React from 'react'
+import Header from '../Header';
+import { exportData  } from './dataAuthors';
+import '../../Css/estiloAuthors.css';
+
+const Authors = () => {
+
+  const data = exportData();
+
+  return (
+    <>
+    <Header/>
+      <div className="container-authors">
+        <div className="col-12 p-2 row elements-card">
+         {data.map((item) => (
+           <div className="col-sm-5 col-md-4 col-lg-4 element-card" key={`data-${item.key}`}>
+          
+               <div className="card image-author">
+                 <img src={item.image} alt="" />
+                 <div className="card-text">
+                 <p>{ item.names }</p>
+                 </div>
+               </div>
+                 <div className="card-footer">{ item.descriptions }</div>
+          
+           </div>
+         ))}
+        </div>
+      </div>
+    </>
+  )
+}
+ 
+export default Authors

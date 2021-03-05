@@ -1,0 +1,141 @@
+
+html{
+  height: 100%;
+}
+
+.content-info{
+  text-align: center;
+}
+
+/* @media (min-width:1395px){ */
+  .container-font{
+  position: relative;
+  bottom: 30.1em;
+  z-index: 1;
+}
+/* } */
+
+@media (max-width: 414px){
+  .container-font{
+  position: relative;
+  bottom: 22.5em;
+  z-index: 1;  
+  }
+}
+
+.container-font > .title-sistem > h1{
+   position: relative;
+   bottom: 0.1em;
+   animation: 3.5s animaText  ;
+   -webkit-animation: 3.5s animaText  ;
+}
+
+@keyframes animaText{
+  0%{
+    color: rgba(0, 0, 0, 0.342);
+    position: relative;
+    bottom: 0.9em;
+  }
+  100%{
+    color: white;
+    bottom: 0.1;
+  }
+}
+
+body{
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.section-container{
+  height: 70vh;
+  background: url('../Img/lib.jpg') no-repeat fixed;
+  background-attachment:scroll;
+   background-size: 100% 100%;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+nav{
+  background: darkslategray;
+}
+
+nav > ul{
+  margin: auto;
+  list-style: none;
+  display: flex;
+  color: white;
+  width:70%;
+  justify-content: space-between;
+}
+
+nav > ul > li{
+  margin: 1em;
+  font-family: 'Big Shoulders Inline Text', cursive;
+  text-decoration: none;
+}
+nav > ul > li > a {
+  font-size: 1.5em;
+}
+
+main{
+  position: relative;
+  bottom: 4em;
+}
+
+nav > ul:hover > li{
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+}
+
+.categories-card{
+  height: 7em;
+  width: 8em;
+  border-radius: 50%;
+ 
+  justify-content: center;
+}
+
+.categories-card:hover{
+  background: darkslategray;
+}
+
+.categories-card:hover > picture > img{
+filter: invert(1);
+  -webkit-filter: invert(1);
+}
+
+@media (max-width: 560px) {
+  nav > ul {
+    position: relative;
+    flex: auto;
+    width: 100%;
+    right: 1.6em;
+  }
+}
+
+.btn-books:hover{
+  background: darkslategrey;
+}
+
+.btn-books{
+  color: white;
+}
+
+.title-sistem{display: none;}
+
+header{
+  height: 66vh;
+}
+
+.container-categories-books{
+  margin-top: 5em;
+}
+

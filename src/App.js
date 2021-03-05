@@ -1,24 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router , Route, Switch } from 'react-router-dom';
+
+import './Css/estilonav.css';
+import Main from './Components/Main';
+
+import Book from './Components/Book';
+import Books from './Components/Books';
+import { Provider } from './Context/Provider'
+//categories
+import History from './Components/History/History';
+import Novelas from './Components/Categories/Novelas/Novelas';
+import Novela from "./Components/Categories/Novelas/Novela";
+import Poemas from './Components/Categories/Poemas/Poemas';
+
+//authors
+import Authors from './Components/Authors/Authors';
+
+//admin
+import Login from './Components/Admin/login';
+import CaseAdmin from './Components/Admin/CaseAdmin';
+import Prestamos from './Components/Admin/Prestamos';
+import EspecificBook from './Components/Admin/EspecificBook';
+
+
 
 function App() {
+  let isTrue = true;
+console.log();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Provider>
+          <Switch>
+            <Route exact path="/" component={Main} />
+            <Route exact path="/history" render={() => <History />} />
+            <Route exact path="/book/:id" component={Book} />
+            <Route exact path="/books" component={Books} />
+            <Route exact path="/novela" component={Novelas} />
+            <Route exact path="/novela/:id" component={Novela} />
+            <Route exact path="/poema" component={Poemas} />
+            <Route exact path="/poema/:id" component={Poemas} />
+            <Route exact path="/authors" component={Authors} />
+            <Route exact path="/admin/login" component={Login} />
+            {isTrue ? (
+              <Route exact path="/admin/count" component={CaseAdmin} />
+            ) : null}
+            (<Route exact path="/admin/loans" component={Prestamos} />)
+            <Route exact path="/admin/books" component={EspecificBook} />
+          </Switch>
+        </Provider>
+      </Router>
+    </>
   );
 }
 
