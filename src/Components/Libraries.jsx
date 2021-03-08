@@ -1,23 +1,24 @@
 import React from 'react'
 import styled from 'styled-components';
-
-import biblioteca1 from '../Img/imageLibraries/biblioteca1.jpg';
-import biblioteca2 from '../Img/imageLibraries/biblioteca2.jpg';
-import biblioteca3 from '../Img/imageLibraries/biblioteca3.jpg';
-import biblioteca4 from '../Img/imageLibraries/biblioteca4.jpg';
-import biblioteca5 from '../Img/imageLibraries/biblioteca5.jpg';
-import biblioteca6 from '../Img/imageLibraries/biblioteca6.jpg';
-import biblioteca7 from '../Img/imageLibraries/biblioteca7.jpg';
-import biblioteca8 from '../Img/imageLibraries/biblioteca8.jpg';
-import biblioteca9 from '../Img/imageLibraries/biblioteca9.jpg';
-import biblioteca10 from '../Img/imageLibraries/biblioteca10.jpg';
 import '../Css/estilosLibraries.css';
 
 const StyledH1 = styled.h1`
 text-align:center;
 font-family:'Playfair Display SC',serif;
 `;
-
+let imagesLibrary = 
+[
+  { name: 'Trinity College de Dublín', image:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Long_Room_Interior%2C_Trinity_College_Dublin%2C_Ireland_-_Diliff.jpg/1191px-Long_Room_Interior%2C_Trinity_College_Dublin%2C_Ireland_-_Diliff.jpg'},
+  { name: 'El Diamante Negro en Copenhague', image: 'https://aws.traveler.es/prod/designs/v1/assets/630x418/61459.jpg'},
+  { name: 'Biblioteca Pública de Estocolmo', image: 'https://pbs.twimg.com/media/EeC0LV9XgAE44kZ?format=jpg&name=900x900'},
+  { name: 'Nueva Biblioteca Alexandrina de Alejandría', image: 'https://sarrauteducacion.com/wp-content/uploads/2020/08/nueva-biblioteca-alexandrina-de-alejandria_05c56f6b_1500x998-1024x681.jpg'},
+  { name: 'biblioteca pública de Nueva York', image: 'https://i1.wp.com/conocenewyork.com/wp-content/uploads/2017/11/NYPL-by-@Darwin_nyc-e1509657168776.jpg?fit=750%2C465'},
+  { name: 'Biblioteca de la Universidad Humboldt en Berlín', image: 'https://sarrauteducacion.com/wp-content/uploads/2020/08/biblioteca-de-la-universidad-humboldt-en-berlin_e6f6a9d5_1500x1000-1024x683.jpg'},
+  { name: 'Biblioteca Apostólica Vaticana Ciudad del Vaticano', image: 'https://i.pinimg.com/originals/a4/30/28/a43028e1bfe26a7dd32ea7c264432878.jpg'},
+  { name: 'Biblioteca Pública de Trømso', image: 'https://i.pinimg.com/originals/6b/30/79/6b3079c3dd4e9132024e00c398c3485e.jpg'},
+  { name: 'Biblioteca de la Basílica de San Francisco Lima', image: 'https://c2.staticflickr.com/6/5014/5531523728_362c3b0eea_b.jpg'},
+  { name: 'Biblioteca Nacional de Praga', image: 'https://www.lr21.com.uy/wp-content/uploads/2015/10/biblioteca-praga2.jpg'}
+]
 const Libraries = () => {
   return (
     <div>
@@ -30,76 +31,22 @@ const Libraries = () => {
         </div>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img src={biblioteca1} className="d-block w-100" alt="..." height="300" />
+            <img src={imagesLibrary[0].image} className="d-block w-100" alt="..." height="300" />
             <div className="carousel-caption d-none d-md-block">
-              <h5>Trinity College de Dublín</h5>
+              <h5>{imagesLibrary[0].name}</h5>
 
             </div>
           </div>
-          <div className="carousel-item">
-            <img src={biblioteca2} className="d-block w-100" alt="..." height="300" />
-            <div className="carousel-caption d-none d-md-block">
-              <h5>El Diamante Negro en Copenhague</h5>
+          { imagesLibrary.map((item,index) => (
+            <div className="carousel-item" key={`data-${index}`}>
+              <img src={item.image} className="d-block w-100" alt="..." height="300" />
+              <div className="carousel-caption d-none d-md-block">
+                <h5>{item.name}</h5>
 
+              </div>
             </div>
-          </div>
-          <div className="carousel-item">
-            <img src={biblioteca3} className="d-block w-100" alt="..." height="300" />
-            <div className="carousel-caption d-none d-md-block">
-              <h5>Biblioteca Pública de Estocolmo</h5>
-
-            </div>
-          </div>
-          <div className="carousel-item">
-            <img src={biblioteca4} className="d-block w-100" alt="..." height="300" />
-            <div className="carousel-caption d-none d-md-block">
-              <h5>Nueva Biblioteca Alexandrina de Alejandría</h5>
-
-            </div>
-          </div>
-
-          <div className="carousel-item">
-            <img src={biblioteca5} className="d-block w-100" alt="..." height="300" />
-            <div className="carousel-caption d-none d-md-block">
-              <h5>biblioteca pública de Nueva York</h5>
-
-            </div>
-          </div>
-          <div className="carousel-item">
-            <img src={biblioteca6} className="d-block w-100" alt="..." height="300" />
-            <div className="carousel-caption d-none d-md-block">
-              <h5>Biblioteca de la Universidad Humboldt en Berlín</h5>
-
-            </div>
-          </div>
-          <div className="carousel-item">
-            <img src={biblioteca7} className="d-block w-100" alt="..." height="300" />
-            <div className="carousel-caption d-none d-md-block">
-              <h5>Biblioteca Apostólica Vaticana Ciudad del Vaticano</h5>
-
-            </div>
-          </div>
-          <div className="carousel-item">
-            <img src={biblioteca8} className="d-block w-100" alt="..." height="300" />
-            <div className="carousel-caption d-none d-md-block">
-              <h5>Biblioteca Pública de Trømso</h5>
-
-            </div>
-          </div>
-          <div className="carousel-item">
-            <img src={biblioteca9} className="d-block w-100" alt="..." height="300" />
-            <div className="carousel-caption d-none d-md-block">
-              <h5>Biblioteca de la Basílica de San Francisco Lima</h5>
-
-            </div>
-          </div>
-          <div className="carousel-item">
-            <img src={biblioteca10} className="d-block w-100" alt="..." height="300" />
-            <div className="carousel-caption d-none d-md-block">
-              <h5>Biblioteca Nacional de Praga</h5>
-
-            </div>
-          </div>
+          ))}
+          
         </div>
         <button className="carousel-control-prev controls" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
           <span className="carousel-control-prev-icon" aria-hidden="true"></span>

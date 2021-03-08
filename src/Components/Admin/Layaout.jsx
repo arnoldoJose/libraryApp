@@ -4,11 +4,12 @@ import '../../Css/layaoutstyle.css';
 import HeaderAdmin from './HeaderAdmin';
 import { Layout, Menu } from 'antd';
 import {
-  
   UserOutlined,
   HomeFilled,
-  PoweroffOutlined
-
+  PoweroffOutlined,
+  BookTwoTone,
+  UserAddOutlined,
+  FileAddFilled
 } from '@ant-design/icons';
 
 
@@ -38,9 +39,9 @@ const Layaout = ({children}) => {
             </Link>
           </Menu.Item>
           <SubMenu key="sub2" icon={<UserOutlined />} title="Administrar">
-            <Menu.Item key="3">Tom</Menu.Item>
-            <Menu.Item key="4">Bill</Menu.Item>
-            <Menu.Item key="5">Alex</Menu.Item>
+            <Menu.Item key="3" icon={<BookTwoTone/>}>Nuevo Libro</Menu.Item>
+            <Menu.Item key="4" icon={<UserAddOutlined/>} >Nuevo Administrador</Menu.Item>
+            <Menu.Item key="5" icon={<FileAddFilled />} >Crear Reporte</Menu.Item>
           </SubMenu>
 
           <Menu.Item icon={<PoweroffOutlined/>}>

@@ -2,11 +2,15 @@ import React from 'react'
 import Layaout from './Layaout';
 import '../../Css/estiloAdmin.css';
 
-import { DeleteFilled } from '@ant-design/icons'
-const Prestamos = () => {
+import {
+  CheckOutlined,
+  DeleteFilled 
+  } from '@ant-design/icons';
+
+const Reservations = () => {
   return (
-    
-      <Layaout>
+
+   <Layaout>
       <div className="asing-scroll">
         <table className="table table-striped">
           <thead>
@@ -15,6 +19,7 @@ const Prestamos = () => {
               <th scope="col">Imagen</th>
               <th scope="col">Nombre</th>
               <th scope="col">Autor</th>
+              <th scope="col">Aprobar</th>
               <th scope="col">Eliminar</th>
             </tr>
           </thead>
@@ -30,7 +35,9 @@ const Prestamos = () => {
               </td>
               <td>lorem</td>
               <td>lorem</td>
-              
+              <td>
+                <button className="btn btn-success"><CheckOutlined /></button>
+              </td>
               <td>
                 <button className="btn btn-danger"><DeleteFilled /></button>
               </td>
@@ -39,21 +46,8 @@ const Prestamos = () => {
 
         </table>
       </div>
-      </Layaout>
-    
-  );
+   </Layaout>
+  )
 }
 
-export default Prestamos
-/**
- *
-   let fecha = "26/02/2021";
-   let fechNueva = "27/03/2021"
-   let day = new Date().getDate();
-
-   if(day > fecha.split("/")[0] && fechNueva.split("/")[1] > fecha.split("/")[1]){
-     console.log("dedes devolver el libro");
-   }else{
-     console.log("no es fecha para devolver");
-   }
- */
+export default Reservations

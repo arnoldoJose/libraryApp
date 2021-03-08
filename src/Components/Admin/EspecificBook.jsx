@@ -52,9 +52,9 @@ const EspecificBook = () => {
 
                   <td>
                     <picture>
-                      <img src={item.image} height="100" width="100" alt="image-book" />
-                    </picture>
+                      <img src={item.book_cover} height="100" width="100" alt="" />
 
+                    </picture>
                   </td>
                   <td>{item.name}</td>
                   <td>{item.autor}</td>

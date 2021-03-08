@@ -29,7 +29,7 @@ const CardBook = ({book}) => {
     <div className="card mb-3 content-all">
       <div className="row g-0 Row">
         <div className="col-sm-8 col-md-5 col-lg-3">
-          <img src={book.img} alt="..." width="340" height="320" className="card-img-book" />
+          <img src={book.book_cover} alt="..." width="340" height="320" className="card-img-book" />
         </div>
         <div className="col-md-7 content-book">
           <div className="card-body card-content">

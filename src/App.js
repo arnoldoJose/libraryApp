@@ -20,7 +20,8 @@ import Login from './Components/Admin/login';
 import CaseAdmin from './Components/Admin/CaseAdmin';
 import Prestamos from './Components/Admin/Prestamos';
 import EspecificBook from './Components/Admin/EspecificBook';
-
+import Reservations from './Components/Admin/Reservations';
+import Returns from './Components/Admin/Returns';
 
 
 function App() {
@@ -46,6 +47,8 @@ console.log();
             ) : null}
             (<Route exact path="/admin/loans" component={Prestamos} />)
             <Route exact path="/admin/books" component={EspecificBook} />
+            <Route exact path="/admin/reservations" component={Reservations} />
+            <Route exact path="/admin/returns" component={Returns} />
           </Switch>
         </Provider>
       </Router>
