@@ -61,7 +61,7 @@ const Header = ({location}) => {
            <li><Link to="/admin/books"> Noticias</Link> </li>
           </ContainerUl>
         </nav>
-      {(pathname === "/") ?
+      {(pathname === "/libraryApp/") ?
           (<>
             <SectionFont />
             <div className="container-font">
