@@ -32,7 +32,7 @@ console.log();
       <Router>
         <Provider>
           <Switch>
-            <Route exact path="/libraryApp" component={Main} />
+            <Route exact path="/libraryApp/" component={Main} />
             <Route exact path="/history" render={() => <History />} />
             <Route exact path="/book/:id" component={Book} />
             <Route exact path="/books" component={Books} />
