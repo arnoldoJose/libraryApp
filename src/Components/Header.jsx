@@ -42,7 +42,7 @@ const Header = ({location}) => {
 
   useEffect(() => {
     document.querySelector("header").scrollIntoView({block:"start",behavior:"smooth"})
-    if(pathname === "/"){
+    if (pathname === "/libraryApp/"){
       setTimeout(() => {
         document.querySelector(".title-sistem").style.display = "block"
       }, 900);
