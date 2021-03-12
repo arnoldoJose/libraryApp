@@ -9,7 +9,7 @@ import Spinner from '../Styled/Spinner';
 const News = () => {
 
   const key = 'b62c656d544d4e6185cae5efc185ee35';
-  let url = `https://newsapi.org/v2/everything?sortBy=popularity&language=es&apiKey=${key}`;
+  let url = `https://newsapi.org/v2/everything?q=futbol&sortBy=popularity&language=es&apiKey=${key}`;
 
   const [news,setNews] = useState("")
   const [status,setStatus] = useState(true); 
@@ -19,7 +19,7 @@ const News = () => {
 
     if(status){
       let consultarNews = async () => {
-        let data = await axios(`${url}&q=futbol`);
+        let data = await axios(`${url}`);
         console.log(data.data.articles.source);
         setNews(data.data.articles);
       }
