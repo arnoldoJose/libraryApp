@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import Header from './Header';
 
-import axios from 'axios';
+// import axios from 'axios';
 import '../Css/estiloNews.css';
 import Spinner from '../Styled/Spinner';
 
@@ -19,9 +19,10 @@ const News = () => {
 
     if(status){
       let consultarNews = async () => {
-        let data = await axios.get(`${url}`);
-        console.log(data.data.articles.source);
-        setNews(data.data.articles);
+        let data = await fetch(`${url}`)
+        let json = await data.json();
+        console.log(json);
+        // setNews(data.data.articles);
       }
       consultarNews();
       setStatus(false)
@@ -31,7 +32,8 @@ const News = () => {
 
   const changeCategory = (e) => {
     setCategory(e.target.id);
-    console.log(e.target.textContent)
+    console.log(e.target.textContent);
+    setNews();
   }
 
   return (
