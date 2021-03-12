@@ -86,7 +86,7 @@ nav > ul > li{
   text-decoration: none;
 }
 nav > ul > li > a {
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
 main{
@@ -94,13 +94,6 @@ main{
   bottom: 4em;
 }
 
-nav > ul:hover > li{
-  transform: scale(1.2);
-  -webkit-transform: scale(1.2);
-  -moz-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  -o-transform: scale(1.2);
-}
 
 .categories-card{
   height: 7em;

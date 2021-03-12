@@ -2,38 +2,36 @@ import React, { useState, useEffect } from 'react'
 
 import Header from './Header';
 
-// import axios from 'axios';
+import axios from 'axios';
 import '../Css/estiloNews.css';
 import Spinner from '../Styled/Spinner';
 
 const News = () => {
 
   const key = 'b62c656d544d4e6185cae5efc185ee35';
-  let url = `https://newsapi.org/v2/everything?q=futbol&sortBy=popularity&language=es&apiKey=${key}`;
+  let url = `https://newsapi.org/v2/everything?sortBy=popularity&language=es&apiKey=${key}`;
 
   const [news,setNews] = useState("")
   const [status,setStatus] = useState(true); 
-  const [category, setCategory] = useState("general");
+  const [search, setSearch] = useState("general");
 
   useEffect(() => {
 
     if(status){
       let consultarNews = async () => {
-        let data = await fetch(`${url}`)
-        let json = await data.json();
-        console.log(json);
-        // setNews(data.data.articles);
+        let data = await axios(`${url}&q=${search}`);
+        console.log(data.data.articles.source);
+        setNews(data.data.articles);
       }
       consultarNews();
       setStatus(false)
     }
 
-  },[url,status,category]);
+  },[url,status,search]);
 
   const changeCategory = (e) => {
-    setCategory(e.target.id);
-    console.log(e.target.textContent);
-    setNews();
+    setSearch(e.target.textContent);
+    setStatus(true)
   }
 
   return (
@@ -46,22 +44,28 @@ const News = () => {
             <div className="container-categories">
 
 
-                <div onClick={changeCategory} id="business">
-                  <p>Negocios /</p>
+                <div  id="business">
+                <p >Negocios /</p>
                 <ul>
-                  <li>Futbol</li>
-                  <li>Baloncesto</li>
-                  <li>Beisbol</li>
+                  <li onClick={changeCategory}>Bitcoin</li>
                 </ul>
                 </div>
-                <div onClick={changeCategory} id="entertainment">
+                <div  id="entertainment">
                   <p>Entretenimiento /</p>
+                  <ul>
+                    <li onClick={changeCategory}>video juegos</li>
+                    <li onClick={changeCategory}>series</li>
+                  </ul>
                 </div>
                 <div onClick={changeCategory} id="general">
                   <p>General /</p>
                 </div>
                 <div onClick={changeCategory} id="healths">
                   <p>Salud /</p>
+                <ul>
+                  <li onClick={changeCategory}>Covid</li>
+                  
+                </ul>
                 </div>
                 <div onClick={changeCategory} id="cience">
                   <p>Ciencia /</p>

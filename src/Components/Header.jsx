@@ -55,7 +55,7 @@ const Header = ({location}) => {
     <header className="header">
         <nav className="navbar">
           <ContainerUl>
-          <li><Link to="/libraryApp"> Inicio</Link> </li>
+          <li><Link to="/libraryApp/"> Inicio</Link> </li>
           <li><Link to="/history">Historia</Link> </li>
           <li><Link to="/authors"> Autores</Link> </li>
            <li><Link to="/news"> Noticias</Link> </li>
