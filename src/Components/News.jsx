@@ -19,7 +19,7 @@ const News = () => {
 
     if(status){
       let consultarNews = async () => {
-        let data = await axios(`${url}`);
+        let data = await axios.get(`${url}`);
         console.log(data.data.articles.source);
         setNews(data.data.articles);
       }
