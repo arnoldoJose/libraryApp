@@ -14,6 +14,7 @@ import Poemas from './Components/Categories/Poemas/Poemas';
 
 //authors
 import Authors from './Components/Authors/Authors';
+import News from './Components/News';
 
 //admin
 import Login from './Components/Admin/login';
@@ -32,7 +33,7 @@ console.log();
       <Router>
         <Provider>
           <Switch>
-            <Route exact path="/libraryApp/" component={Main} />
+            <Route exact path="/libraryApp" component={Main} />
             <Route exact path="/history" render={() => <History />} />
             <Route exact path="/book/:id" component={Book} />
             <Route exact path="/books" component={Books} />
@@ -41,6 +42,7 @@ console.log();
             <Route exact path="/poema" component={Poemas} />
             <Route exact path="/poema/:id" component={Poemas} />
             <Route exact path="/authors" component={Authors} />
+            <Route exact path="/news" component={News} />
             <Route exact path="/admin/login" component={Login} />
             {isTrue ? (
               <Route exact path="/admin/count" component={CaseAdmin} />

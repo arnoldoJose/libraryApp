@@ -2,7 +2,7 @@
   "name": "frontapp",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://arnoldoJose.github.io/libraryApp/",
+  "homepage": "http://arnoldoJose.github.io/libraryApp",
   "dependencies": {
     "@ant-design/icons": "^4.5.0",
     "@react-pdf/renderer": "^1.6.13",

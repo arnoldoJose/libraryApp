@@ -3,11 +3,11 @@
 import clienteAxios from "../../Config/config";
 import Swal from "sweetalert2";
 
-const enviar = () => {
-  if (localStorage.getItem("data")) {
-    console.log("enviando data");
-  }
-  console.log(JSON.parse(localStorage.getItem("data")));
+ const dataLocal = () => {
+ if(localStorage.getItem("data")){
+ let { mobile_user, name_user } = JSON.parse(localStorage.getItem("data"));
+ return { mobile_user, name_user };
+ }
 };
 
 class ValidateForm {
@@ -58,16 +58,27 @@ class ValidateForm {
     }
   };
 
-  disabledBtn = () => {
-    document
-      .querySelector(".btn-outline-secondary")
-      .removeAttribute("data-bs-toggle");
-    document.querySelector(".btn-api").disabled = true;
-  };
+  saveDataLocal(name_user, mobile_user, name_book) {
+    localStorage.setItem(
+      "data",
+      JSON.stringify({ name_user, mobile_user, name_book })
+    );
+  }
 
+  verifyLocal (name_book) {
+    let { name_book: name_local } = JSON.parse(localStorage.getItem("data"));
+
+    if (name_book === name_local) {
+    return false;
+    } else {
+    return true;
+    }
+  }
+  
   sendData = async (dataloan) => {
-    this.disabledBtn();
-    localStorage.setItem("data", JSON.stringify(dataloan));
+    let { name_user, mobile_user, name_book } = dataloan;
+    this.saveDataLocal(name_user, mobile_user, name_book);
+    
     let data = await clienteAxios.post("create/loan", dataloan);
     console.log(data);
   };
@@ -75,19 +86,34 @@ class ValidateForm {
 
 const methodsForm = new ValidateForm();
 
-let { sendData, verifyValue, verifyLength, showMessage } = methodsForm;
+let { sendData, verifyValue, verifyLength,verifyLocal ,showMessage } = methodsForm;
 
 const callApi = (dataloan) => {
-
+  
   if (!verifyValue()) {
     let message = "Llena Todos Los Campos";
     showMessage(message);
   } else if (!verifyLength()) {
     verifyLength();
+  } else if(!verifyLocal(dataloan.name_book)){
+    showMessage("no puedes prestar el mismo libro");
   } else {
     sendData(dataloan);
     Swal.fire("Prestamo Procesado", "You clicked the button!", "success");
   }
 };
 
-export { enviar, callApi };
+export { callApi, dataLocal };
+
+
+
+
+
+
+
+// disabledBtn = () => {
+//   document
+//     .querySelector(".btn-outline-secondary")
+//     .removeAttribute("data-bs-toggle");
+//   document.querySelector(".btn-api").disabled = true;
+// };

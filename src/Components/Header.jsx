@@ -42,7 +42,7 @@ const Header = ({location}) => {
 
   useEffect(() => {
     document.querySelector("header").scrollIntoView({block:"start",behavior:"smooth"})
-    if (pathname === "/libraryApp/"){
+    if (pathname === "/libraryApp"){
       setTimeout(() => {
         document.querySelector(".title-sistem").style.display = "block"
       }, 900);
@@ -55,13 +55,13 @@ const Header = ({location}) => {
     <header className="header">
         <nav className="navbar">
           <ContainerUl>
-           <li><Link to="/"> Inicio</Link> </li>
+          <li><Link to="/libraryApp"> Inicio</Link> </li>
           <li><Link to="/history">Historia</Link> </li>
           <li><Link to="/authors"> Autores</Link> </li>
-           <li><Link to="/admin/books"> Noticias</Link> </li>
+           <li><Link to="/news"> Noticias</Link> </li>
           </ContainerUl>
         </nav>
-      {(pathname === "/libraryApp/") ?
+      {(pathname === "/libraryApp") ?
           (<>
             <SectionFont />
             <div className="container-font">

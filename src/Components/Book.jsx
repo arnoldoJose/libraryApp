@@ -9,31 +9,27 @@ import  '../Css/estiloBook.css';
 const Book = ({match}) => {
 
   const { verifyStatus } = useContext(CRMContext)
-  const [book,saveBook] = useState("");
+  const [book,getBook] = useState("");
 
   let { id } = match.params;
 
 
   useEffect(() => {
 
-    let consultarBook = async () => {
-      const data = await clienteAxios.get(`get/book/${id}`);
-      saveBook(data.data.data);
-      verifyStorage();
-      document.querySelector("header").scrollIntoView({block:"start",behavior:"smooth"})
+    if(id){
+      let consultarBook = async () => {
+        const data = await clienteAxios.get(`get/book/${id}`);
+        getBook(data.data.data);
+
+        // document.querySelector("header").scrollIntoView({ block: "start", behavior: "smooth" })
+      }
+
+      consultarBook();
+      verifyStatus(true);
     }
-    
-    consultarBook();
-    verifyStatus(true);
+
   },[id,verifyStatus]);
 
-
-
-  const verifyStorage = () => {
-    if(localStorage.getItem("data")){
-      document.querySelector(".btn-outline-secondary").removeAttribute("data-bs-toggle");
-    }
-  }
 
   if(!book) return null;
 
