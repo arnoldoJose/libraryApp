@@ -76,8 +76,9 @@ nav > ul{
   list-style: none;
   display: flex;
   color: white;
-  width:70%;
-  justify-content: space-between;
+  width:100%;
+  justify-items: center;
+  justify-content: center;
 }
 
 nav > ul > li{
@@ -119,6 +120,11 @@ filter: invert(1);
     width: 100%;
     right: 1.6em;
   }
+
+  nav > ul > li > a {
+  font-size: 1.6em;
+}
+ 
 }
 
 .btn-books:hover{
