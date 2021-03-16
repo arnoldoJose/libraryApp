@@ -18,6 +18,8 @@ const Main = () => {
   useEffect(() => {
     verifyStatus(true);
   }, [verifyStatus])
+
+  console.log(process.env.REACT_APP_BACKEND);
  
   return (
     <>
