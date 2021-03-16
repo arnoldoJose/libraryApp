@@ -5,6 +5,7 @@ import { CRMContext } from '../Context/Provider';
 import Header from './Header';
 import CardBook from './CardBook';
 import  '../Css/estiloBook.css';
+import Spinner from '../Styled/Spinner';
 
 const Book = ({match}) => {
 
@@ -36,11 +37,13 @@ const Book = ({match}) => {
   return (
     <>
      <Header/>
-      <div className="container container-book">
-        <div className="col-10">
-          <CardBook book={book} />
+     {(!book) ? <Spinner/>: (
+        <div className="container container-book">
+          <div className="col-10">
+            <CardBook book={book} />
+          </div>
         </div>
-      </div>
+     )}
     </>
   )
 }
