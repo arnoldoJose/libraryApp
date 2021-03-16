@@ -76,9 +76,8 @@ nav > ul{
   list-style: none;
   display: flex;
   color: white;
-  width:100%;
-  justify-items: center;
-  justify-content: center;
+  width:70%;
+  justify-content: space-between;
 }
 
 nav > ul > li{
@@ -113,16 +112,23 @@ filter: invert(1);
   -webkit-filter: invert(1);
 }
 
-@media (max-width: 560px) {
-  nav > ul {
-    position: relative;
-    flex: auto;
-    width: 100%;
-    right: 1.6em;
-  }
+@media (max-width: 650px) {
+
+  nav > ul{
+  position: relative;
+  flex: auto;
+  width: 100%;
+  right: 1.6em;
+  margin: auto;
+  list-style: none;
+  color: white;
+  width:100%;
+  justify-items: center;
+  justify-content: center;
+}
 
   nav > ul > li > a {
-  font-size: 1.6em;
+  font-size: 1.7em;
 }
  
 }
