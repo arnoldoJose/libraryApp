@@ -31,10 +31,11 @@ const Search = ({ saveBooks, saveMessage }) => {
        [name]: value
      });
 
-     if(!value.length){
-       verifyStatus(true)
-    }else{
-      handelSubmit();
+     if(value.length > 3){
+       handelSubmit();
+    }else if(!value.length){
+      saveMessage("")
+      verifyStatus(true); 
      }
    }
 

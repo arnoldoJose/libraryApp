@@ -24,7 +24,7 @@ const Footer = ({location}) => {
 
   let {pathname} = location;
 
-  return pathname === "/history" || pathname === "/admin/count" || pathname === "/books"  ? null : (
+  return  pathname === "/admin/count"   ? null : (
     <footer className="footer">
       <ContainerFooter>
      <div className="container-footer">

@@ -122,11 +122,16 @@ filter: invert(1);
 }
 
 .btn-books:hover{
-  background: darkslategrey;
+  background: rgba(47, 79, 79, 0.651);
+  color: white;
 }
 
 .btn-books{
   color: white;
+  font-size: 1.5em;
+  font-family:'Courier New', Courier, monospace;
+  border: 1px solid;
+  background-color: rgba(0, 0, 0, 0.459);
 }
 
 .title-sistem{display: none;}

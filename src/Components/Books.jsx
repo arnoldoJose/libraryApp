@@ -5,6 +5,7 @@ import Header from './Header';
 import Spinner from '../Styled/Spinner';
 import Search from './Search';
 import CardBooks from './CardBooks';
+import Footer from './Footer';
 
 import { CRMContext } from '../Context/Provider';
 
@@ -58,6 +59,7 @@ const Books = ({location}) => {
           </div>
         </div>
     </div>
+    <Footer/>
     </>
   )
 }

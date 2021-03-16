@@ -31,10 +31,11 @@ const CategorieSearch = ({ categoria, setCategoriaBook, saveMessage}) => {
       [name] : value
     });
 
-    if(!value.length){
-      verifyStatus(true)
-    }else{
+    if (value.length > 3){
       handelSubmit();
+    } else if (!value.length){
+      saveMessage("")
+      verifyStatus(true)
     }
 
   }

@@ -39,6 +39,15 @@ justify-content: center;
     height:5em;
   }
 
+  @media (max-width: 420px) {
+    
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    align-content:center;
+
+  }
+
 };
 `;
 

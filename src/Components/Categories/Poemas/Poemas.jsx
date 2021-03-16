@@ -4,6 +4,7 @@ import Header from '../../Header';
 import Spinner from '../../../Styled/Spinner';
 import CategorieSearch from '../CategorieSearch';
 import CardBooks from '../../CardBooks';
+import Footer from '../../Footer';
 import { CRMContext } from '../../../Context/Provider';
 import '../../../Css/estiloCategoria.css';
 import '../../../Css/estilosBooks.css';
@@ -53,6 +54,7 @@ const Poemas = ({location}) => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   )
 }
