@@ -31,9 +31,6 @@ const Book = ({match}) => {
 
   },[id,verifyStatus]);
 
-
-  if(!book) return null;
-
   return (
     <>
      <Header/>
