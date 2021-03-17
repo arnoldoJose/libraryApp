@@ -2,14 +2,11 @@ import React, {useContext,useEffect} from 'react'
 
 import Header from './Header';
 import Footer from './Footer';
-// import AniBook from './AniBook';
 import Categories from './Categories';
 import Libreries from './Libraries';
 
 import '../Css/estilonav.css';
 import { CRMContext } from '../Context/Provider';
-
-
 
 const Main = () => {
 
@@ -18,8 +15,6 @@ const Main = () => {
   useEffect(() => {
     verifyStatus(true);
   }, [verifyStatus])
-
-  console.log(process.env.REACT_APP_BACKEND);
  
   return (
     <>

@@ -31,7 +31,7 @@ const Search = ({ saveBooks, saveMessage }) => {
        [name]: value
      });
 
-     if(value.length > 3){
+     if(value.length >= 3){
        handelSubmit();
     }else if(!value.length){
       saveMessage("")

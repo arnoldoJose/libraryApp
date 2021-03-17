@@ -26,11 +26,10 @@ const Poemas = ({location}) => {
     if(status){
       const callApi = async () => {
         let data = await clienteAxios.get(`get/categorybook?category=${categoria}`);
-        setCategoriaBook(data.data.book)
-
+        setCategoriaBook(data.data.book);
       }
       callApi();
-      verifyStatus(false)
+      verifyStatus(false);
     }
 
   }, [categoria,status,verifyStatus])
@@ -50,7 +49,7 @@ const Poemas = ({location}) => {
             {catBook.map((item) => (
               <CardBooks item={item} key={item._id} />
             ))}
-            <h1>Books</h1>
+            
           </div>
         </div>
       </div>

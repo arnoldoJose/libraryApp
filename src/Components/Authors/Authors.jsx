@@ -1,11 +1,18 @@
-import React from 'react'
+import React, {useEffect,useContext} from 'react'
 import Header from '../Header';
 import { exportData  } from './dataAuthors';
 import '../../Css/estiloAuthors.css';
+import { CRMContext } from '../../Context/Provider';
 
 const Authors = () => {
 
   const data = exportData();
+
+  const { verifyStatus } = useContext(CRMContext)
+
+  useEffect(() => {
+    verifyStatus(true)
+  }, [verifyStatus])
 
   return (
     <>

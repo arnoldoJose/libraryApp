@@ -1,14 +1,20 @@
-import React from 'react'
+import React, {useEffect,useContext} from 'react'
 
 import styled from 'styled-components';
 import Header from '../Header';
-
+import { CRMContext } from '../../Context/Provider';
 const ContainerCategories = styled.div`
 margin: 2em;
 margin-top: 15%;
 `;
 
 const History = () => {
+
+  const { verifyStatus } = useContext(CRMContext)
+
+  useEffect(() => {
+    verifyStatus(true);
+  }, [verifyStatus])
 
   return (
   <>

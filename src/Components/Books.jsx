@@ -11,13 +11,7 @@ import { CRMContext } from '../Context/Provider';
 
 import '../Css/estilosBooks.css';
 
-const Books = ({location}) => {
-  let categoria = location.pathname.split("/")[1];
-
-  if(categoria === "books"){
-    categoria = "book"
-  }
-
+const Books = () => {
   const { status, verifyStatus } = useContext(CRMContext)
   const [books,saveBooks] = useState("");
   const [messageError,saveMessage] = useState("")
@@ -31,12 +25,12 @@ const Books = ({location}) => {
       }
       consultarAPI();
       verifyStatus(false);
-      console.log(status);
     }
   },[status,verifyStatus]);
 
   return (!books) ? <Spinner/> : (
     <>
+    
       <Header/>
     <div className="element-container mt-5">
         <div className="container-search d-flex col-9">
@@ -55,7 +49,7 @@ const Books = ({location}) => {
             {books.map((item) => (
               <CardBooks item={item} key={item._id} />
             ))}
-            <h1>Books</h1>
+            
           </div>
         </div>
     </div>
