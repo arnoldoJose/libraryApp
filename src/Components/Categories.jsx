@@ -85,7 +85,7 @@ const Categories = () => {
         </div>
         
         <div className="cat">
-         <Link to={"/documentales"}>
+          <Link to={"/documentales"}>
             <div className="card categories-card">
 
               <picture>

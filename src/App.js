@@ -9,8 +9,10 @@ import { Provider } from './Context/Provider'
 //categories
 import History from './Components/History/History';
 import Novelas from './Components/Categories/Novelas/Novelas';
-import Novela from "./Components/Categories/Novelas/Novela";
+// import Novela from "./Components/Categories/Novelas/Novela";
 import Poemas from './Components/Categories/Poemas/Poemas';
+import Documentaries from "./Components/Categories/Documentaries/Documentaries";
+import Otros from "./Components/Categories/Otros/Otros";
 
 //authors
 import Authors from './Components/Authors/Authors';
@@ -38,9 +40,9 @@ console.log();
             <Route exact path="/book/:id" component={Book} />
             <Route exact path="/books" component={Books} />
             <Route exact path="/novela" component={Novelas} />
-            <Route exact path="/novela/:id" component={Novela} />
             <Route exact path="/poema" component={Poemas} />
-            <Route exact path="/poema/:id" component={Poemas} />
+            <Route exact path="/documentales" component={Documentaries} />
+            <Route exact path="/otros" component={Otros} />
             <Route exact path="/authors" component={Authors} />
             <Route exact path="/news" component={News} />
             <Route exact path="/admin/login" component={Login} />
