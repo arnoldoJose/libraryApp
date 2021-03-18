@@ -65,28 +65,32 @@ class ValidateForm {
     );
   }
 
-  verifyLocal (name_book) {
-    let { name_book: name_local } = JSON.parse(localStorage.getItem("data"));
-
-    if (name_book === name_local) {
-    return false;
-    } else {
-    return true;
+  verifyLocal(name_book) {
+    if (localStorage.getItem("data")) {
+      if (name_book === JSON.parse(localStorage.getItem("data")).name_book) {
+        return false;
+      } else {
+        return true;
+      }
+    } else{
+      return true
     }
+
   }
-  
+
   sendData = async (dataloan) => {
     let { name_user, mobile_user, name_book } = dataloan;
     this.saveDataLocal(name_user, mobile_user, name_book);
-    
+
     let data = await clienteAxios.post("create/loan", dataloan);
     console.log(data);
+    console.log(JSON.parse(localStorage.getItem("data")).name_book);
   };
 }
 
 const methodsForm = new ValidateForm();
 
-let { sendData, verifyValue, verifyLength,verifyLocal ,showMessage } = methodsForm;
+let { sendData, verifyValue, verifyLength, verifyLocal ,showMessage } = methodsForm;
 
 const callApi = (dataloan) => {
   
@@ -95,7 +99,7 @@ const callApi = (dataloan) => {
     showMessage(message);
   } else if (!verifyLength()) {
     verifyLength();
-  } else if(!verifyLocal(dataloan.name_book)){
+  } else if (!verifyLocal(dataloan.name_book)) {
     showMessage("no puedes prestar el mismo libro");
   } else {
     sendData(dataloan);
@@ -104,7 +108,6 @@ const callApi = (dataloan) => {
 };
 
 export { callApi, dataLocal };
-
 
 
 
