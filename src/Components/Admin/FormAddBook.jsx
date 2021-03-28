@@ -21,7 +21,7 @@ align-content:center;
 }
 
 .bt-add{
-  margin:3px;
+  margin:9px;
 }
 
 .form-control {
@@ -29,6 +29,7 @@ align-content:center;
 }
 .card-title h1{
   margin:0.5em;
+  text-align:center;
 }
 .row{
   margin-right:auto;
@@ -82,28 +83,28 @@ const FormAddBook = () => {
                 </div>
                 <div className="col-6">
               <div className="mb-1">
-                <label htmlFor="message-text" className="col-form-label">Autor:</label>
-                <input type="text" onChange={handelChange} name="autor" className="form-control" id="recipient-mobile" />
+                <label htmlFor="message-text" className="col-form-label">Nombre Autor:</label>
+                <input type="text" onChange={handelChange} name="autor" className="form-control"  />
               </div>
                 </div>
               <div className="col-6">
               <div className="mb-1">
                 <label htmlFor="message-text" className="col-form-label">Editorial:</label>
-                <input type="text" onChange={handelChange} name="editorial" className="form-control" id="recipient-mobile" />
+                <input type="text" onChange={handelChange} name="editorial" className="form-control"  />
               </div>
               </div>
               <div className="col-6">
 
               <div className="mb-1">
                 <label htmlFor="message-text" className="col-form-label">Imagen:</label>
-                <input type="file" name="image" onChange={e => setFile(e.target.files[0])} className="form-control" id="recipient-mobile" />
+                <input type="file" name="image" onChange={e => setFile(e.target.files[0])} className="form-control"  />
               </div>
               </div>
 
               <div className="col-6">
               <div className="mb-1">
                 <label htmlFor="message-text" className="col-form-label">Cantidad:</label>
-                <input type="number" onChange={handelChange} name="amount" className="form-control" id="recipient-mobile" />
+                <input type="number" onChange={handelChange} name="amount" className="form-control"  />
               </div>
               </div>
               <div className="col-6">
@@ -120,7 +121,7 @@ const FormAddBook = () => {
               </div>
               <div className="mb-1">
                 <label htmlFor="message-text" className="col-form-label">Descripcion:</label>
-              <textarea name="descripcion" onChange={handelChange} className="form-control" id="" cols="10" rows="2"></textarea>
+              <textarea name="descripcion" onChange={handelChange} className="form-control"  cols="10" rows="2"></textarea>
                 
               </div>
               

@@ -22,13 +22,14 @@ align-content:center;
 }
 
 .btn-lg{
-  margin:3px;
+  margin:9px;
 }
 .form-control {
   border: 1px solid rgba(48, 47, 47, 0.5)
 }
 .card-title h1{
   margin:0.5em;
+  text-align:center;
 }
 `;
 const FormLoans = ({match}) => {
