@@ -25,7 +25,8 @@ import Prestamos from './Components/Admin/Prestamos';
 import EspecificBook from './Components/Admin/EspecificBook';
 import Reservations from './Components/Admin/Reservations';
 import Returns from './Components/Admin/Returns';
-
+import FormLoans from "./Components/Admin/FormLoans";
+import FormAddBook from './Components/Admin/FormAddBook';
 
 function App() {
   let isTrue = true;
@@ -51,8 +52,10 @@ console.log();
             ) : null}
             (<Route exact path="/admin/loans" component={Prestamos} />)
             <Route exact path="/admin/books" component={EspecificBook} />
+            <Route exact path="/admin/add/books" component={FormAddBook} />
             <Route exact path="/admin/reservations" component={Reservations} />
             <Route exact path="/admin/returns" component={Returns} />
+            <Route exact path="/admin/loan/:id" component={FormLoans} />
           </Switch>
         </Provider>
       </Router>

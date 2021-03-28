@@ -4,6 +4,7 @@ import Spinner from '../../Styled/Spinner';
 import '../../Css/estiloAdmin.css';
 
 import clienteAxios from '../../Config/config';
+import { NavLink } from 'react-router-dom';
 
 //crear un solo componente para la tabla y pasarle como argumento
 //la data que retorna la api
@@ -27,8 +28,6 @@ const EspecificBook = () => {
     }
     consultarApi();
   }, [])
-  
-
 
   return  (
     
@@ -59,7 +58,13 @@ const EspecificBook = () => {
                   <td>{item.name}</td>
                   <td>{item.autor}</td>
                   <td>
-                    <button className="btn btn-primary">Prestar</button>
+                    
+                    < NavLink
+                      to={`/admin/loan/${item._id}`}
+                      className="btn btn-primary">
+                      Prestar
+                      </NavLink>
+                    
                     <button className="btn btn-info">Editar</button>
                     <button className="btn btn-danger">Eliminar</button>
                   </td>
@@ -69,9 +74,9 @@ const EspecificBook = () => {
 
           </table>
         </div>
+        
       )}
    
-
     </Layaout>
   )
 }

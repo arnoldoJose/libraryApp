@@ -79,6 +79,7 @@ class ValidateForm {
   }
 
   sendData = async (dataloan) => {
+    console.log(dataloan);
     let { name_user, mobile_user, name_book } = dataloan;
     this.saveDataLocal(name_user, mobile_user, name_book);
 

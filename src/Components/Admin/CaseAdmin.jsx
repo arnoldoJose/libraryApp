@@ -9,7 +9,12 @@ import loans from '../../Img/asset/calendar.png';
 import clock from '../../Img/asset/clock.png';
 import reservations from '../../Img/asset/calendar_book.png';
 
+import { useCount } from '../../Hooks/useCount';
+
 const CaseAdmin = () => {
+
+  let {countBoook,countLoans,countReturn,countReservation} = useCount()
+
 
   return (
     <Layaout>
@@ -22,8 +27,8 @@ const CaseAdmin = () => {
                   <h6>Libros</h6>
                 </div>
                 <img src={book} alt="book" className="card-img-top" height="200" width="200" />
-                <div className="card-footer">
-
+                <div className="card-footer text-center">
+                  <h4>{countBoook}</h4>
                 </div>
          </NavLink>
       </div>
@@ -35,8 +40,8 @@ const CaseAdmin = () => {
                   <h6>Prestamos</h6>
                 </div>
                 <img src={loans} alt="book" className="card-img-top" height="200" width="200" />
-                <div className="card-footer">
-
+                <div className="card-footer text-center">
+                  <h4>{countLoans}</h4>
                 </div>
            </NavLink>
          </div>
@@ -48,8 +53,8 @@ const CaseAdmin = () => {
                   <h6>Devoluciones</h6>
                 </div>
                 <img src={clock} alt="book" className="card-img-top" height="200" width="200" />
-                <div className="card-footer">
-
+                <div className="card-footer text-center">
+                  <h4>{countReturn}</h4>
                 </div>
              </NavLink>
           </div>
@@ -61,8 +66,8 @@ const CaseAdmin = () => {
                   <h6>Reservaciones</h6>
                 </div>
                 <img src={reservations} alt="book" className="card-img-top" height="200" width="200"  />
-                <div className="card-footer">
-
+                <div className="card-footer text-center">
+                  <h4>{countReservation}</h4>
                 </div>
               </NavLink>
          </div>
