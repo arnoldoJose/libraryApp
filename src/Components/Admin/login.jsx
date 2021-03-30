@@ -1,23 +1,45 @@
-import React from 'react'
-
-
-import '../../Css/login.css';
+import React, {useContext} from 'react'
+import Swal from 'sweetalert2';
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { useHistory } from 'react-router-dom';
+import { CRMAuthContext } from '../../Context/AuthProvider';
 
+import clienteAxios from '../../Config/config';
 
-const login = () => {
+import '../../Css/login.css';
 
+const Login = () => {
 
-    const onFinish = (values) => {
-      console.log('Received values of form: ', values);
+      const {setAuth} = useContext(CRMAuthContext);
+      let history = useHistory();
+
+    const onFinish = async (values) => {
+     
+      try {
+
+       let data = await clienteAxios.post("login", values);
+       setData(data);
+       if(data.data.token) history.push("/admin/count");
+    
+        } catch (error) {
+          Swal.fire({icon: 'error',title: 'Oops...',text: `${error.response.data.message}`});
+      }
     };
+    
+    const setData = ({data}) => {
+    setAuth({auth:true,token: data.token,user: data.admin});
+    localStorage.setItem("token",data.token)
+  }
 
   return (
    <div className="content-frist-login">
       <div className="container content-login">
-        <div className="col-sm-5 col-md-5 col-lg-4">
-          <div className="card">
+        <div className="col-sm-5 col-md-5 col-lg-6">
+          <div className="card fontcss">
+            <div className="card-title m-2" >
+              <h1 className="text-center">Iniciar Sesion</h1>
+            </div>
             <Form
               name="normal_login"
               className="login-form"
@@ -27,36 +49,38 @@ const login = () => {
               onFinish={onFinish}
             >
               <Form.Item
-                name="username"
+                name="email"
                 rules={[
                   {
                     required: true,
-                    message: 'Please input your Username!',
+                    message: 'Ingrese su correo!',
                   },
                 ]}
+                
               >
-                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+                <Input className="control-intp" prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Correo" />
               </Form.Item>
               <Form.Item
                 name="password"
                 rules={[
                   {
                     required: true,
-                    message: 'Please input your Password!',
+                    message: 'Ingrese su contraseña!',
                   },
                 ]}
               >
                 <Input
+                  className="control-intp"
                   prefix={<LockOutlined className="site-form-item-icon" />}
                   type="password"
-                  placeholder="Password"
+                  placeholder="Contraseña"
                 />
               </Form.Item>
 
 
               <Form.Item>
                 <Button type="primary" htmlType="submit" className="login-form-button">
-                  Log in
+                  Ingresar
         </Button>
 
               </Form.Item>
@@ -68,4 +92,4 @@ const login = () => {
   )
 }
 
-export default login
+export default Login

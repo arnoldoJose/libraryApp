@@ -13,7 +13,7 @@ import {
 } from '@ant-design/icons';
 
 
-import {Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu
@@ -21,7 +21,12 @@ const { SubMenu } = Menu
 
 const Layaout = ({children}) => {
 
-  // const {pathname} = location;
+  let history = useHistory();
+
+  const sessionClose = () =>{
+    localStorage.removeItem("token");
+    history.replace("/admin/login");
+  }
 
   return (
     
@@ -49,7 +54,7 @@ const Layaout = ({children}) => {
             <Menu.Item key="5" icon={<FileAddFilled />} >Crear Reporte</Menu.Item>
           </SubMenu>
 
-          <Menu.Item icon={<PoweroffOutlined/>}>
+          <Menu.Item onClick={sessionClose} icon={<PoweroffOutlined/>}>
             Cerrar Sesion
           </Menu.Item>
           </Menu>
