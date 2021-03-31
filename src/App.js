@@ -50,10 +50,10 @@ function App() {
             <Route exact path="/news" component={News} />
             <Route exact path="/admin/login" component={Login} />
 
-            {auth.auth || localStorage.getItem("token") ? (
-              <Route exact path="/admin/count" component={CaseAdmin} />
-            ) : (
+            {!auth.auth || !localStorage.getItem("token") ? (
               <Redirect to="/admin/login" />
+              ) : (
+              <Route exact path="/admin/count" component={CaseAdmin} />
             )}
 
             <Route exact path="/admin/loans" component={Prestamos} />
