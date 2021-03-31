@@ -19,8 +19,8 @@ const Login = () => {
       try {
 
        let data = await clienteAxios.post("login", values);
+       history.push("/admin/count");
        setData(data);
-       if(data.data.token) history.push("/admin/count");
     
         } catch (error) {
           Swal.fire({icon: 'error',title: 'Oops...',text: `${error.response.data.message}`});
