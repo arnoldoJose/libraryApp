@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 
 import '../../Css/layaoutstyle.css';
 import HeaderAdmin from './HeaderAdmin';
@@ -14,7 +14,7 @@ import {
 
 
 import { Link, useHistory } from 'react-router-dom';
-
+import { CRMAuthContext } from '../../Context/AuthProvider';
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu
 
@@ -22,10 +22,12 @@ const { SubMenu } = Menu
 const Layaout = ({children}) => {
 
   let history = useHistory();
+  const { setAuth } = useContext(CRMAuthContext);
 
   const sessionClose = () =>{
-    localStorage.removeItem("token");
     history.replace("/admin/login");
+    setAuth({ auth: false, token:'', user:'' });
+    localStorage.removeItem("token");
   }
 
   return (
