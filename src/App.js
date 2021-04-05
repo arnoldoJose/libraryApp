@@ -20,6 +20,7 @@ import Otros from "./Components/Categories/Otros/Otros";
 import Authors from './Components/Authors/Authors';
 import News from './Components/News';
 //admin
+import Register from './Components/Admin/Register';
 import Login from './Components/Admin/Login';
 import CaseAdmin from './Components/Admin/CaseAdmin';
 import Prestamos from './Components/Admin/Prestamos';
@@ -48,12 +49,14 @@ function App() {
             <Route exact path="/otros" component={Otros} />
             <Route exact path="/authors" component={Authors} />
             <Route exact path="/news" component={News} />
+
             <Route exact path="/admin/login" component={Login} />
+            <Route exact path="/admin/register" component={Register} />
 
             {auth.auth || localStorage.getItem("token") ? (
               <Route exact path="/admin/count" component={CaseAdmin} />
-              ) : (
-                <Redirect to="/admin/login" />
+            ) : (
+              <Redirect to="/admin/login" />
             )}
 
             <Route exact path="/admin/loans" component={Prestamos} />

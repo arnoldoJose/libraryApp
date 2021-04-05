@@ -5,6 +5,8 @@ import Spinner from '../../Styled/Spinner';
 import Swal from 'sweetalert2';
 import clienteAxios from '../../Config/config';
 
+import { getMont, getDate, lastDate } from './Funtion/FunctionalData';
+
 const StyleForm = styled.div`
 display:flex;
 align-items:center;
@@ -41,39 +43,40 @@ const FormLoans = ({match}) => {
     let call = async () => {
       let data = await clienteAxios.get(`get/book/${match.params.id}`);
       setLoanAdmin(data.data.data);
-    }
+    };
     call();
   }, [match.params.id]);
 
-  const handelChange = (e) => {
-    let {name,value} = e.target;
-    setDataUser({
-      ...dataUser,
-      [name] : value
-    })
-  }
 
   const senData = async () => {
-  if(dataUser === ""){
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: "llena todos los campos",
-    });
-    return;
-  }else{
-    Swal.fire(
-      'Good job!',
-      'You clicked the button!',
-      'success'
-    );
+    dataUser = {
+      name_user: dataUser.name_user,
+      mobile_user: dataUser.mobile_user,
+      image_book: loanAdmin.book_cover,
+      name_book: loanAdmin.name,
+      return_loan: dataUser.return_loan,
+    };
+    const controls = document.querySelectorAll(".form-control");
+    if (!controls[0].value || !controls[1].value || !controls[2].value) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "llena todos los campos",
+      });
+      return;
+    } else {
+      let createLoan = await clienteAxios.post("admin/loan", loanAdmin);
 
-    // let createLoan = await clienteAxios.post("")
-  }
-  }
+      if (createLoan.status === 200){
+        Swal.fire("Prestamo Procesado!", "You clicked the button!", "success");
+      }
+    }
+  };
 
-  let getMont = new Date().getMonth()+1;
-  let lastDate = `${new Date(new Date().getFullYear(), getMont, 0).getDate()}`
+  const handelChange = (e) => {
+    let { name, value } = e.target;
+    setDataUser({ ...dataUser, [name]: value });
+  };
 
   return (
   <Layaout>
@@ -98,7 +101,7 @@ const FormLoans = ({match}) => {
                   <label htmlFor="">Asigna un dia para devolver el Libro</label>
                 </div>
                 <div className="container-date">
-                  <input type="date" onChange={handelChange} className="form-control" name="return_loan" id="date" min={`${new Date().getFullYear()}-${(getMont <= 9) ? ("0" + getMont) : (getMont)}-${new Date().getDate()}`} max={`${new Date().getFullYear()}-${(getMont <= 9) ? ("0" + getMont) : (getMont)}-${lastDate}`}/>
+                  <input type="date" onChange={handelChange} className="form-control" name="return_loan" id="date" min={`${new Date().getFullYear()}-${(getMont <= 9) ? ("0" + getMont) : (getMont)}-${"0" + getDate}`} max={`${new Date().getFullYear()}-${(getMont <= 9) ? ("0" + getMont) : (getMont)}-${lastDate}`}/>
                 </div>
               </form>
             </div>

@@ -52,7 +52,11 @@ const Layaout = ({children}) => {
                 Nuevo Libro
               </Link>
             </Menu.Item>
-            <Menu.Item key="4" icon={<UserAddOutlined/>} >Nuevo Administrador</Menu.Item>
+              <Menu.Item key="4" icon={<UserAddOutlined />} >
+         <Link to="/admin/register">
+                Nuevo Administrador
+         </Link>
+              </Menu.Item>
             <Menu.Item key="5" icon={<FileAddFilled />} >Crear Reporte</Menu.Item>
           </SubMenu>
 

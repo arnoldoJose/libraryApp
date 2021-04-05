@@ -4,37 +4,37 @@ import {  callApi,  dataLocal } from './Function/function'
 const CardBook = ({book}) => {
 
  
-  const [loanData,setLoanData] = useState("");
-  const name = useRef('');
-  const phone = useRef('');
-  
-  const handelChange = (e) => {
-     let {name,value} = e.target;
+  const [loanData, setLoanData] = useState("");
+  const name = useRef("");
+  const phone = useRef("");
 
-     setLoanData({
-       ...loanData,
-       [name] : value
-     })
-  }
+  const handelChange = (e) => {
+    let { name, value } = e.target;
+
+    setLoanData({
+      ...loanData,
+      [name]: value,
+    });
+  };
 
   let dataLoan;
-  
-  if(!dataLocal()){
-     dataLoan = {
+
+  if (!dataLocal()) {
+    dataLoan = {
       name_user: loanData.name_user,
       mobile_user: loanData.mobile_user,
       image_book: book.book_cover,
       name_book: book.name,
-      return_loan: loanData.return_loan
-    }
-  }else{
+      return_loan: loanData.return_loan,
+    };
+  } else {
     dataLoan = {
-    name_user: name.current.defaultValue ,
-    mobile_user: phone.current.defaultValue,
-    image_book: book.book_cover,
-    name_book: book.name,
-    return_loan: loanData.return_loan
-    }
+      name_user: name.current.defaultValue,
+      mobile_user: phone.current.defaultValue,
+      image_book: book.book_cover,
+      name_book: book.name,
+      return_loan: loanData.return_loan,
+    };
   }
 
 //name.current.defaultValue

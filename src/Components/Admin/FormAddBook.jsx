@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import Layaout from './Layaout';
 import styled from 'styled-components'
-
+import Swal from 'sweetalert2';
 import clienteAxios from '../../Config/config';
 
 const StyleFormBook = styled.div`
@@ -39,17 +39,10 @@ align-content:center;
 
 const FormAddBook = () => {
 
-  const [book,setBook] = useState({name:'',autor:'',editorial:'',categoria:'',descripcion:'',amount: ''});
+  const [book,setBook] = useState("");
   const [fileCover,setFile] = useState("");
 
-  const handelChange = (e) => {
-    let {name,value} = e.target;
-    setBook({
-      ...book,
-      [name] : value
-    });
-  }
-
+  
   const formData = new FormData();
   formData.append("name",book.name);
   formData.append("autor",book.autor);
@@ -58,11 +51,28 @@ const FormAddBook = () => {
   formData.append("descripcion",book.descripcion);
   formData.append("amount",book.amount);
   formData.append("image",fileCover);
-
+  
   const postBook = async () => {
+  
+    let inputs = document.querySelectorAll(".form-control");
+
+    if (!inputs[0].value || !inputs[1].value || !inputs[2].value || !inputs[3].value || !inputs[4].value || !inputs[5].value || !inputs[6].value){
+      Swal.fire({ icon: 'error', title: 'Oops...', text: "llena todos los campos", });
+      return;
+    }else{
+      let data = await clienteAxios.post("create/book", formData);
+
+      if(data.status === 200) Swal.fire('Nuevo libro agregado!', 'You clicked the button!', 'success');
+    }
     
-    let data = await clienteAxios.post("create/book",formData);
-    console.log(data);
+  }
+
+  const handelChange = (e) => {
+    let {name,value} = e.target;
+    setBook({
+      ...book,
+      [name] : value
+    });
   }
 
   return (

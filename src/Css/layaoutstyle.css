@@ -1,1 +1,5 @@
  .main-admin{min-height:45em}
+
+ @media (max-width:1366px){
+   .main-admin{min-height:41em}
+ }
