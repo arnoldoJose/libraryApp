@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/libraryApp/static/css/main.cb01da2c.chunk.css",
-    "main.js": "/libraryApp/static/js/main.91d0590c.chunk.js",
-    "main.js.map": "/libraryApp/static/js/main.91d0590c.chunk.js.map",
+    "main.css": "/libraryApp/static/css/main.b22c15f7.chunk.css",
+    "main.js": "/libraryApp/static/js/main.6302066f.chunk.js",
+    "main.js.map": "/libraryApp/static/js/main.6302066f.chunk.js.map",
     "runtime-main.js": "/libraryApp/static/js/runtime-main.ca526e89.js",
     "runtime-main.js.map": "/libraryApp/static/js/runtime-main.ca526e89.js.map",
     "static/css/2.a61f0ae8.chunk.css": "/libraryApp/static/css/2.a61f0ae8.chunk.css",
-    "static/js/2.2ca60c59.chunk.js": "/libraryApp/static/js/2.2ca60c59.chunk.js",
-    "static/js/2.2ca60c59.chunk.js.map": "/libraryApp/static/js/2.2ca60c59.chunk.js.map",
+    "static/js/2.24eae78e.chunk.js": "/libraryApp/static/js/2.24eae78e.chunk.js",
+    "static/js/2.24eae78e.chunk.js.map": "/libraryApp/static/js/2.24eae78e.chunk.js.map",
     "index.html": "/libraryApp/index.html",
     "static/css/2.a61f0ae8.chunk.css.map": "/libraryApp/static/css/2.a61f0ae8.chunk.css.map",
-    "static/css/main.cb01da2c.chunk.css.map": "/libraryApp/static/css/main.cb01da2c.chunk.css.map",
-    "static/js/2.2ca60c59.chunk.js.LICENSE.txt": "/libraryApp/static/js/2.2ca60c59.chunk.js.LICENSE.txt",
+    "static/css/main.b22c15f7.chunk.css.map": "/libraryApp/static/css/main.b22c15f7.chunk.css.map",
+    "static/js/2.24eae78e.chunk.js.LICENSE.txt": "/libraryApp/static/js/2.24eae78e.chunk.js.LICENSE.txt",
     "static/media/book.b142f6fd.png": "/libraryApp/static/media/book.b142f6fd.png",
     "static/media/book.b9aded8b.svg": "/libraryApp/static/media/book.b9aded8b.svg",
     "static/media/calendar.5c39a158.png": "/libraryApp/static/media/calendar.5c39a158.png",
@@ -35,13 +35,14 @@
     "static/media/google-docs.0c73a183.svg": "/libraryApp/static/media/google-docs.0c73a183.svg",
     "static/media/estilonav.css": "/libraryApp/static/media/liback.fd6e697a.jpg",
     "static/media/me-gusta.b16558c9.svg": "/libraryApp/static/media/me-gusta.b16558c9.svg",
-    "static/media/speech-bubble.9fdc4542.svg": "/libraryApp/static/media/speech-bubble.9fdc4542.svg"
+    "static/media/speech-bubble.9fdc4542.svg": "/libraryApp/static/media/speech-bubble.9fdc4542.svg",
+    "static/media/user.d54b5cea.png": "/libraryApp/static/media/user.d54b5cea.png"
   },
   "entrypoints": [
     "static/js/runtime-main.ca526e89.js",
     "static/css/2.a61f0ae8.chunk.css",
-    "static/js/2.2ca60c59.chunk.js",
-    "static/css/main.cb01da2c.chunk.css",
-    "static/js/main.91d0590c.chunk.js"
+    "static/js/2.24eae78e.chunk.js",
+    "static/css/main.b22c15f7.chunk.css",
+    "static/js/main.6302066f.chunk.js"
   ]
 }
