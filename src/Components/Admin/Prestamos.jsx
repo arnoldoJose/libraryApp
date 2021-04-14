@@ -17,9 +17,13 @@ const Prestamos = () => {
    consultarAPI();
   }, []);
 
+ 
+
   return (
       <Layaout>
       {(!loans) ? <Spinner/> : (
+        <>
+          
         <div className="asing-scroll">
           <table className="table table-striped">
             <thead>
@@ -54,7 +58,9 @@ const Prestamos = () => {
             </tbody>
 
           </table>
-        </div>)}
+        </div>
+        </>
+        )}
       </Layaout>
   );
 }

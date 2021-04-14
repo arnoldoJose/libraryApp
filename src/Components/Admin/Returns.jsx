@@ -1,6 +1,9 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect } from 'react';
+import { verifydate } from './Funtion/date'
+
 import Layaout from './Layaout';
 import Spinner from '../../Styled/Spinner';
+import Swal from 'sweetalert2';
 import '../../Css/estiloAdmin.css';
 
 import clienteAxios from '../../Config/config';
@@ -14,18 +17,62 @@ import {
 const Returns = () => {
 
   const [returns,saveReturns] = useState("");
+  const [nameUser,setName] = useState("");
+  const [status,setStatus] = useState(true);
 
   useEffect(() => {
-    const callAPI = async () => {
-      let data = await clienteAxios.get("get/returns");
+   if(status){
+     const callAPI = async () => {
+       let data = await clienteAxios.get("get/returns");
+       saveReturns(data.data);
+       verifydate(data.data)
+     }
+     callAPI();
+     setStatus(false);
+   }
+  }, [status]);
+ 
+
+  const searchName = async () => {
+    let data = await clienteAxios.get(`get/return?name=${nameUser.name}`);
+
+    if(!data.data.message){
       saveReturns(data.data);
+    }else{
+      Swal.fire({ icon: 'error', title: 'Oops...', text: `${data.data.message}` });
+      return;
     }
-    callAPI();
-  }, [])
+  }
+
+  const saveName = (e) => {
+    let { name, value } = e.target;
+    setName({
+      ...nameUser,
+      [name]: value
+    });
+
+    if(!value.length){
+      setStatus(true)
+    }
+  }
+
+  const sendMessage = async (mobil,name) => {
+   let data = await clienteAxios.post(`send/message?phone=${mobil}`);
+   if(data.status === 200){
+     Swal.fire(`El usuario ${name} a sido notificado`, "You clicked the button!", "success");
+   }
+  }
 
   return (
     <Layaout>
       {(!returns) ? <Spinner/> : (
+        <>
+          <div className="container-search ">
+            <div className="content-search d-flex col-sm-12 col-md-9 col-lg-4">
+              <input type="text" onChange={saveName} name="name" className="form-control" placeholder="Ingresa el nombre del usuario" />
+              <button className="btn btn-primary mx-3" onClick={searchName}>buscar</button>
+            </div>
+          </div>
         <div className="asing-scroll">
           <table className="table table-striped">
             <thead>
@@ -45,7 +92,7 @@ const Returns = () => {
 
             <tbody >
               {returns.map((Item) => (
-                <tr key={`${Item._id}`}>
+                <tr key={`${Item._id}`} id={Item._id}>
 
                   <td>
                     <picture>
@@ -62,7 +109,7 @@ const Returns = () => {
                     <button className="btn btn-success"><CheckOutlined /></button>
                   </td>
                   <td>
-                    <button className="btn btn-warning"><NotificationFilled /></button>
+                    <button className="btn btn-warning" title="enviar aviso" onClick={() => sendMessage(Item.mobile_user,Item.name_user)}><NotificationFilled /></button>
                   </td>
                   <td>
                     <button className="btn btn-danger"><DeleteFilled /></button>
@@ -73,6 +120,7 @@ const Returns = () => {
 
           </table>
         </div>
+        </>
       )}
     </Layaout>
   )

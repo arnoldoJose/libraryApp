@@ -3,34 +3,73 @@ import { useEffect, useState } from "react";
 import clienteAxios from "../Config/config";
 
 export const useCount = () => {
+
+    const [date,setDate] = useState("");
     const [countBoook, saveCountBook] = useState(0);
     const [countLoans, saveCountLoans] = useState(0);
     const [countReturn, saveCountReturn] = useState(0);
     const [countReservation, saveCountReservations] = useState(0);
 
-  useEffect(() => {
+   
 
+  useEffect(() => {
     let call = async () => {
-      const [primerGet, segundoGet,tercerGet,cuartoGet] = await Promise.all([
-        clienteAxios.get("get/books"),
-        clienteAxios.get("get/reservations"),
-        clienteAxios.get("get/returns"),
-        clienteAxios.get("get/loans"),
+      const primerGet = new Promise((resolve, reject) => {
+        try {
+          resolve(clienteAxios.get("get/books"));
+        } catch (error) {
+          reject(error);
+        }
+      });
+      const segundoGet = new Promise((resolve, reject) => {
+        try {
+          resolve(clienteAxios.get("get/loans"));
+        } catch (error) {
+          reject(error);
+        }
+      });
+      const tercerGet = new Promise((resolve, reject) => {
+        try {
+          resolve(clienteAxios.get("get/returns"));
+        } catch (error) {
+          reject(error);
+        }
+      });
+      const cuartoGet = new Promise((resolve, reject) => {
+        try {
+          resolve(clienteAxios.get("get/reservations"));
+        } catch (error) {
+          reject(error);
+        }
+      });    
+      let data = await Promise.all([
+        primerGet,
+        segundoGet,
+        tercerGet,
+        cuartoGet,
       ]);
 
-      saveCountBook(primerGet.data.book.length);
-      saveCountReservations(segundoGet.data.length);
-      saveCountReturn(tercerGet.data.length);
-      saveCountLoans(cuartoGet.data.length);
+      saveCountBook(data[0].data.book.length);
+      saveCountLoans(data[1].data.length);
+      saveCountReturn(data[2].data.length);
+      saveCountReservations(data[3].data.length);
+      setDate(data[2].data)
+      // (tercerGet.data.length);
+      // (segundoGet.data.length);
     };
     call();
   }, []);
 
-
+  
   return {
     countBoook,
     countLoans,
     countReturn,
     countReservation,
+   date
   };
 };
+
+    // 
+    // 
+    // 

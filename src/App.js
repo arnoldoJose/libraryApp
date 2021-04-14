@@ -51,13 +51,12 @@ function App() {
             <Route exact path="/news" component={News} />
 
             <Route exact path="/admin/login" component={Login} />
-            <Route exact path="/admin/register" component={Register} />
 
             {auth.auth || localStorage.getItem("token") ? (
               <Route exact path="/admin/count" component={CaseAdmin} />
             ) : (
               <Redirect to="/admin/login" />
-            )}
+              )}
 
             <Route exact path="/admin/loans" component={Prestamos} />
             <Route exact path="/admin/books" component={EspecificBook} />
@@ -65,6 +64,7 @@ function App() {
             <Route exact path="/admin/reservations" component={Reservations} />
             <Route exact path="/admin/returns" component={Returns} />
             <Route exact path="/admin/loan/:id" component={FormLoans} />
+            <Route exact path="/admin/register" component={Register} />
           </Switch>
         </Provider>
       </Router>

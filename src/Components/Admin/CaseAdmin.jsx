@@ -3,18 +3,44 @@ import { NavLink } from 'react-router-dom'
 
 import '../../Css/estiloAdmin.css';
 import Layaout from './Layaout';
+// import Swal from 'sweetalert2';
 
 import book from '../../Img/asset/book.png';
 import loans from '../../Img/asset/calendar.png';
 import clock from '../../Img/asset/clock.png';
 import reservations from '../../Img/asset/calendar_book.png';
 
-import { useCount } from '../../Hooks/useCount';
+import { useCount  } from '../../Hooks/useCount';
 
 const CaseAdmin = () => {
 
-  let {countBoook,countLoans,countReturn,countReservation} = useCount()
 
+  let {
+    countBoook,
+    countLoans,
+    countReturn,
+    countReservation,
+    date,
+  } = useCount();
+
+  const emitNotifications = () => {
+    let year = new Date().getFullYear(),
+      month = new Date().getMonth() + 1,
+      day = new Date().getDate();
+    let fecha = `${year}-${month <= 9 ? "0" + month : month}-${
+      day <= 9 ? "0" + day : day
+    }`;
+
+    if (!date) return null;
+    date.forEach((Item) => {
+      if (fecha.indexOf(Item.return_date) !== -1) {
+        setTimeout(() => {
+          alert(`devoluciones pendientes hoy ${fecha} `);
+        }, 1000);
+      }
+    });
+  };
+  emitNotifications();
 
   return (
     <Layaout>

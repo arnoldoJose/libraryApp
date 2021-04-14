@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import clienteAxios from '../../Config/config';
 
 import { getMont, getDate, lastDate } from './Funtion/FunctionalData';
+import { useParams } from 'react-router';
 
 const StyleForm = styled.div`
 display:flex;
@@ -33,22 +34,26 @@ align-content:center;
   margin:0.5em;
   text-align:center;
 }
-`;
-const FormLoans = ({match}) => {
 
+`;
+const FormLoans = () => {
+
+  let { id } = useParams();
   const [loanAdmin,setLoanAdmin] = useState("");
-  const [dataUser,setDataUser] = useState("");//crear objeto con los nombre de los inputs
+  let [dataUser,setDataUser] = useState("");//crear objeto con los nombre de los inputs
 
   useEffect(() => {
     let call = async () => {
-      let data = await clienteAxios.get(`get/book/${match.params.id}`);
+      let data = await clienteAxios.get(`get/book/${id}`);
       setLoanAdmin(data.data.data);
     };
     call();
-  }, [match.params.id]);
+    
+  }, [id]);
 
 
   const senData = async () => {
+   
     dataUser = {
       name_user: dataUser.name_user,
       mobile_user: dataUser.mobile_user,
@@ -58,22 +63,19 @@ const FormLoans = ({match}) => {
     };
     const controls = document.querySelectorAll(".form-control");
     if (!controls[0].value || !controls[1].value || !controls[2].value) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "llena todos los campos",
-      });
+      Swal.fire({ icon: "error", title: "Oops...", text: "llena todos los campos", });
       return;
     } else {
-      let createLoan = await clienteAxios.post("admin/loan", loanAdmin);
-
-      if (createLoan.status === 200){
+      let createLoan = await clienteAxios.post("admin/loan", dataUser);
+      console.log(createLoan.data.return_date);
+      if (createLoan.status === 200) {
         Swal.fire("Prestamo Procesado!", "You clicked the button!", "success");
       }
     }
   };
 
   const handelChange = (e) => {
+ 
     let { name, value } = e.target;
     setDataUser({ ...dataUser, [name]: value });
   };
@@ -93,15 +95,19 @@ const FormLoans = ({match}) => {
                   <label htmlFor="recipient-name" className="col-form-label">Nombre Usuario:</label>
                   <input type="text" onChange={handelChange} name="name_user" className="form-control" id="recipient-name" />
                 </div>
-                <div className="mb-3">
-                  <label htmlFor="message-text" className="col-form-label">Numero de Telefono:</label>
-                  <input type="text" onChange={handelChange} name="mobile_user" className="form-control" id="recipient-mobile" />
-                </div>
+                  <div className="mb-3">
+                    <label htmlFor="message-text" className="col-form-label text-center">
+                        Numero de Telefono:
+                    </label>
+                    <div className="form-group d-flex">
+                      <input type="text" onChange={handelChange} name="mobile_user" className="form-control" id="recipient-mobile" />
+                    </div>
+                  </div>
                 <div className="container-label">
                   <label htmlFor="">Asigna un dia para devolver el Libro</label>
                 </div>
                 <div className="container-date">
-                  <input type="date" onChange={handelChange} className="form-control" name="return_loan" id="date" min={`${new Date().getFullYear()}-${(getMont <= 9) ? ("0" + getMont) : (getMont)}-${"0" + getDate}`} max={`${new Date().getFullYear()}-${(getMont <= 9) ? ("0" + getMont) : (getMont)}-${lastDate}`}/>
+                  <input type="date" onChange={handelChange} className="form-control" name="return_loan" id="date" min={`${new Date().getFullYear()}-${(getMont <= 9) ? ("0" + getMont) : (getMont)}-${(getDate <= 9) ? ("0" + getDate) : (getDate)}`} max={`${new Date().getFullYear()}-${(getMont <= 9) ? ("0" + getMont) : (getMont)}-${lastDate}`}/>
                 </div>
               </form>
             </div>

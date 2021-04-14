@@ -2,6 +2,7 @@ import React, {useContext} from 'react'
 
 import '../../Css/layaoutstyle.css';
 import HeaderAdmin from './HeaderAdmin';
+import logo from '../../Img/asset/logo.png';
 import { Layout, Menu } from 'antd';
 import {
   UserOutlined,
@@ -16,7 +17,7 @@ import {
 import { Link, useHistory } from 'react-router-dom';
 import { CRMAuthContext } from '../../Context/AuthProvider';
 const { Header, Sider, Content } = Layout;
-const { SubMenu } = Menu
+const { SubMenu } = Menu;
 
 
 const Layaout = ({children}) => {
@@ -38,10 +39,12 @@ const Layaout = ({children}) => {
         breakpoint="md"
         >
            
-          <div className="logo" />
-          <Menu theme="dark" mode="inline" style={{ position:'relative', top:'3em' }} >
-          <Menu.Item key="1" icon={<HomeFilled />}>
-            <Link to="/admin/count">
+          <div className="logo">
+            <img src={logo} alt="" width="105" height="110"/>
+            </div>
+          <Menu theme="dark" mode="inline" style={{ position:'relative', top:'1.3em' }} >
+          <Menu.Item className="hover-back"  key="1" icon={<HomeFilled />}>
+            <Link to="/admin/count" style={{color: "white"}}>
               Inicio
             </Link>
           </Menu.Item>
@@ -52,7 +55,7 @@ const Layaout = ({children}) => {
                 Nuevo Libro
               </Link>
             </Menu.Item>
-              <Menu.Item key="4" icon={<UserAddOutlined />} >
+            <Menu.Item key="4" icon={<UserAddOutlined />} >
          <Link to="/admin/register">
                 Nuevo Administrador
          </Link>
