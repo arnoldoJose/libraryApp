@@ -32,7 +32,6 @@ const Returns = () => {
    }
   }, [status]);
  
-
   const searchName = async () => {
     let data = await clienteAxios.get(`get/return?name=${nameUser.name}`);
 
@@ -44,23 +43,29 @@ const Returns = () => {
     }
   }
 
-  const saveName = (e) => {
-    let { name, value } = e.target;
-    setName({
-      ...nameUser,
-      [name]: value
-    });
-
-    if(!value.length){
-      setStatus(true)
-    }
+  const changeState = async (id) => {
+    let data = await clienteAxios.put(`update/loan/${id}`);
+   if(data.status === 200){
+     Swal.fire(`${data.data.message}`, "You clicked the button!", "success");
+     setStatus(true);
+   }
+   return;
   }
-
+  
   const sendMessage = async (mobil,name) => {
    let data = await clienteAxios.post(`send/message?phone=${mobil}`);
    if(data.status === 200){
      Swal.fire(`El usuario ${name} a sido notificado`, "You clicked the button!", "success");
-   }
+    }
+  }
+  
+  const saveName = (e) => {
+    let { name, value } = e.target;
+    setName({...nameUser,[name]: value});
+
+    if(!value.length){
+      setStatus(true)
+    }
   }
 
   return (
@@ -106,7 +111,7 @@ const Returns = () => {
                   <td>{`${Item.date_loan}`}</td>
                   <td>{`${Item.return_date}`}</td>
                   <td>
-                    <button className="btn btn-success"><CheckOutlined /></button>
+                    <button className="btn btn-success" onClick={() => changeState(Item._id)}><CheckOutlined /></button>
                   </td>
                   <td>
                     <button className="btn btn-warning" title="enviar aviso" onClick={() => sendMessage(Item.mobile_user,Item.name_user)}><NotificationFilled /></button>

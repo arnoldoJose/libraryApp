@@ -39,6 +39,15 @@ const Reservations = () => {
     }
   }
 
+  const changeState = async (id) => {
+    let data = await clienteAxios.put(`update/reservation/${id}`);
+    if (data.status === 200) {
+      Swal.fire(`${data.data.message}`, "You clicked the button!", "success");
+      setStatus(true);
+    }
+    return;
+  }
+
   const handelReservation = (e) => {
     
     let {name,value} = e.target;
@@ -81,7 +90,7 @@ const Reservations = () => {
 
               <tbody >
                 {reservations.map((item) => (
-                  <tr key={`${item._id}`}>
+                  <tr key={`${item._id}`} id={item._id}>
                     <td>
                       <picture>
                         <img src={`${item.image_book}`} height="100" width="100" alt="cover-book" />
@@ -94,7 +103,7 @@ const Reservations = () => {
                     <td>{`${item.date_loan}`}</td>
                     <td>{`${item.return_date}`}</td>
                     <td>
-                      <button className="btn btn-success"><CheckOutlined /></button>
+                      <button className="btn btn-success" onClick={() => changeState(item._id)}><CheckOutlined /></button>
                     </td>
                     <td>
                       <button className="btn btn-danger"><DeleteFilled /></button>

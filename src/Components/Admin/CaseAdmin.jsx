@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {useEffect,useMemo} from 'react';
+import io from 'socket.io-client';
 import { NavLink } from 'react-router-dom'
 
 import '../../Css/estiloAdmin.css';
 import Layaout from './Layaout';
-// import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 import book from '../../Img/asset/book.png';
 import loans from '../../Img/asset/calendar.png';
@@ -12,9 +13,15 @@ import reservations from '../../Img/asset/calendar_book.png';
 
 import { useCount  } from '../../Hooks/useCount';
 
+
+
 const CaseAdmin = () => {
 
-
+  const path = `${process.env.REACT_APP_BACKEND}`;
+  const socket = useMemo(() => io.connect(path, {
+    transports: ['websocket']
+  }),[path]);
+  
   let {
     countBoook,
     countLoans,
@@ -22,6 +29,16 @@ const CaseAdmin = () => {
     countReservation,
     date,
   } = useCount();
+
+
+  useEffect(() => {
+console.log(path);    
+    socket.on('connect',() => {
+      socket.on("envio", (data) => {
+        Swal.fire(`${data}`, "You clicked the button!", "success");
+      })
+    })
+  }, [socket]);
 
   const emitNotifications = () => {
     let year = new Date().getFullYear(),
@@ -42,6 +59,7 @@ const CaseAdmin = () => {
   };
   emitNotifications();
 
+ 
   return (
     <Layaout>
     <div className="container-main-admin container">
