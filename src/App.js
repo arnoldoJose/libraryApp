@@ -29,6 +29,8 @@ import Reservations from './Components/Admin/Reservations';
 import Returns from './Components/Admin/Returns';
 import FormLoans from "./Components/Admin/FormLoans";
 import FormAddBook from './Components/Admin/FormAddBook';
+import EditBook from './Components/Admin/EditBook';
+import ReportAdmin from './Components/Admin/ReportAdmin';
 
 function App() {
   
@@ -56,7 +58,7 @@ function App() {
               <Route exact path="/admin/count" component={CaseAdmin} />
             ) : (
               <Redirect to="/admin/login" />
-              )}
+            )}
 
             <Route exact path="/admin/loans" component={Prestamos} />
             <Route exact path="/admin/books" component={EspecificBook} />
@@ -65,6 +67,8 @@ function App() {
             <Route exact path="/admin/returns" component={Returns} />
             <Route exact path="/admin/loan/:id" component={FormLoans} />
             <Route exact path="/admin/register" component={Register} />
+            <Route exact path="/admin/edit/:id" component={EditBook} />
+            <Route exact path="/admin/report" component={ReportAdmin} />
           </Switch>
         </Provider>
       </Router>

@@ -72,6 +72,7 @@ const FormLoans = () => {
         Swal.fire("Prestamo Procesado!", "You clicked the button!", "success");
       }
     }
+    document.querySelector("#form-loan-admin").reset();
   };
 
   const handelChange = (e) => {
@@ -87,10 +88,10 @@ const FormLoans = () => {
         <StyleForm>
           <div className="card col-12 center-input " >
             <div className="card-title">
-              <h1>Nuevo Prestamo</h1>
+              <h1>Crear Prestamo</h1>
             </div>
             <div className="content-form col-10">
-              <form>
+              <form id="form-loan-admin">
                 <div className="mb-3">
                   <label htmlFor="recipient-name" className="col-form-label">Nombre Usuario:</label>
                   <input type="text" onChange={handelChange} name="name_user" className="form-control" id="recipient-name" />

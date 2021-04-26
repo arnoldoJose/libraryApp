@@ -60,7 +60,11 @@ const Layaout = ({children}) => {
                 Nuevo Administrador
          </Link>
               </Menu.Item>
-            <Menu.Item key="5" icon={<FileAddFilled />} >Crear Reporte</Menu.Item>
+            <Menu.Item key="5" icon={<FileAddFilled />} >
+              <Link to="/admin/report">
+                Crear Reporte
+              </Link>
+            </Menu.Item>
           </SubMenu>
 
           <Menu.Item onClick={sessionClose} icon={<PoweroffOutlined/>}>

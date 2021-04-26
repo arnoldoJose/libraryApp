@@ -1,6 +1,6 @@
 import React, { useState,useRef } from 'react'
 import {  callApi,  dataLocal } from './Function/function'
-
+import { getMont,getDate,lastDate } from './Admin/Funtion/FunctionalData'
 const CardBook = ({book}) => {
 
  
@@ -76,7 +76,6 @@ const CardBook = ({book}) => {
 
                       {(localStorage.getItem("data") ? (
                         <form>
-                          <p>con datos en localstorage</p>
                           <div className="mb-3">
                             <label htmlFor="recipient-name" className="col-form-label">Tu Nombre:</label>
                             <input type="text" name="name_user" disabled={true} defaultValue={dataLocal().name_user} ref={name} className="form-control" id="recipient-name" />
@@ -88,7 +87,7 @@ const CardBook = ({book}) => {
                         </form>
                       ) : (
 
-                        <form>
+                        <form id="form-loan">
                           <div className="mb-3">
                             <label htmlFor="recipient-name" className="col-form-label">Tu Nombre:</label>
                             <input type="text" onChange={handelChange} name="name_user" className="form-control" id="recipient-name" />
@@ -104,7 +103,7 @@ const CardBook = ({book}) => {
                       <label htmlFor="">Marca el Dia Para Devolver el Libro</label>
                     </div>
                     <div className="container-date">
-                      <input type="date" onChange={handelChange} className="form-control" name="return_loan" id="date" />
+                      <input type="date" onChange={handelChange} className="form-control" name="return_loan" id="date" min={`${new Date().getFullYear()}-${(getMont <= 9) ? ("0" + getMont) : (getMont)}-${(getDate <= 9) ? ("0" + getDate) : (getDate)}`} max={`${new Date().getFullYear()}-${(getMont <= 9) ? ("0" + getMont) : (getMont)}-${lastDate}`} />
                     </div>
                     <div className="modal-footer">
                       <button type="button" onClick={() => callApi(dataLoan)} className="btn btn-primary btn-block btn-api">Realizar Prestamo</button>

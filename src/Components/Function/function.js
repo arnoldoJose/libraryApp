@@ -105,6 +105,7 @@ const callApi = (dataloan) => {
   } else {
     sendData(dataloan);
     Swal.fire("Prestamo Procesado", "You clicked the button!", "success");
+    document.querySelector("#form-loan").reset();
   }
 };
 

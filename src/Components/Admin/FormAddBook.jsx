@@ -64,7 +64,7 @@ const FormAddBook = () => {
 
       if(data.status === 200) Swal.fire('Nuevo libro agregado!', 'You clicked the button!', 'success');
     }
-    
+    document.querySelector("#form-add").reset();
   }
 
   const handelChange = (e) => {
@@ -83,59 +83,61 @@ const FormAddBook = () => {
             <div className="card-title">
               <h1>Agregar Nuevo Libro</h1>
             </div>
+              <form id="form-add">
             <div className="row">
-              
-                <div className="col-6">
-              <div className="mb-1">
-                <label htmlFor="recipient-name" className="col-form-label">Nombre Libro:</label>
-                <input type="text" onChange={handelChange} name="name" className="form-control" id="recipient-name" />
-              </div>
-                </div>
-                <div className="col-6">
-              <div className="mb-1">
-                <label htmlFor="message-text" className="col-form-label">Nombre Autor:</label>
-                <input type="text" onChange={handelChange} name="autor" className="form-control"  />
-              </div>
-                </div>
+
               <div className="col-6">
-              <div className="mb-1">
-                <label htmlFor="message-text" className="col-form-label">Editorial:</label>
-                <input type="text" onChange={handelChange} name="editorial" className="form-control"  />
+                <div className="mb-1">
+                  <label htmlFor="recipient-name" className="col-form-label">Nombre Libro:</label>
+                  <input type="text" onChange={handelChange} name="name" className="form-control" id="recipient-name" />
+                </div>
               </div>
+              <div className="col-6">
+                <div className="mb-1">
+                  <label htmlFor="message-text" className="col-form-label">Nombre Autor:</label>
+                  <input type="text" onChange={handelChange} name="autor" className="form-control" />
+                </div>
+              </div>
+              <div className="col-6">
+                <div className="mb-1">
+                  <label htmlFor="message-text" className="col-form-label">Editorial:</label>
+                  <input type="text" onChange={handelChange} name="editorial" className="form-control" />
+                </div>
               </div>
               <div className="col-6">
 
-              <div className="mb-1">
-                <label htmlFor="message-text" className="col-form-label">Imagen:</label>
-                <input type="file" name="image" onChange={e => setFile(e.target.files[0])} className="form-control"  />
-              </div>
+                <div className="mb-1">
+                  <label htmlFor="message-text" className="col-form-label">Imagen:</label>
+                  <input type="file" name="image" onChange={e => setFile(e.target.files[0])} className="form-control" />
+                </div>
               </div>
 
               <div className="col-6">
-              <div className="mb-1">
-                <label htmlFor="message-text" className="col-form-label">Cantidad:</label>
-                <input type="number" onChange={handelChange} name="amount" className="form-control"  />
-              </div>
+                <div className="mb-1">
+                  <label htmlFor="message-text" className="col-form-label">Cantidad:</label>
+                  <input type="number" onChange={handelChange} name="amount" className="form-control" />
+                </div>
               </div>
               <div className="col-6">
-              <div className="mb-1">
-                <label htmlFor="message-text" className="col-form-label">Categoria:</label>
-                <select name="categoria" onChange={handelChange} className="form-control" id="">
-                  <option >---Selecciones una categoria---</option>
-                  <option value="novela">Novela</option>
-                  <option value="poesia">Poesia</option>
-                  <option value="documentales">Documentales</option>
-                  <option value="otros">Otros</option>
-                </select>
-              </div>
+                <div className="mb-1">
+                  <label htmlFor="message-text" className="col-form-label">Categoria:</label>
+                  <select name="categoria" onChange={handelChange} className="form-control" id="">
+                    <option >---Selecciones una categoria---</option>
+                    <option value="novela">Novela</option>
+                    <option value="poema">Poesia</option>
+                    <option value="documentales">Documentales</option>
+                    <option value="otros">Otros</option>
+                  </select>
+                </div>
               </div>
               <div className="mb-1">
                 <label htmlFor="message-text" className="col-form-label">Descripcion:</label>
-              <textarea name="descripcion" onChange={handelChange} className="form-control"  cols="10" rows="2"></textarea>
-                
+                <textarea name="descripcion" onChange={handelChange} className="form-control" cols="10" rows="2"></textarea>
+
               </div>
               
             </div>
+              </form>
 
             <button className="btn btn-success btn-lg bt-add" onClick={postBook}>+Agregar</button>
           </div>

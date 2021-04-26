@@ -36,6 +36,26 @@ const EspecificBook = () => {
     }
   }
 
+  const deleted = (id) => {
+    Swal.fire({
+      title: "Deseas borrar el libro?",
+      text: "",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        clienteAxios.delete(`delete/book/${id}`);
+
+        Swal.fire("Eliminado!", "El libro a sido eliminado.", "success");
+       
+        setStatus(true);
+      }
+    });
+  };  
+
   const saveName = (e) => {
     let {name,value} = e.target;
     setNameBook({
@@ -56,7 +76,7 @@ const EspecificBook = () => {
      <>
       <div className="container-search ">
       <div className="content-search d-flex col-sm-12 col-md-9 col-lg-4">
-              <input type="text" name="name" onChange={saveName} className="form-control" />
+              <input type="text" name="name" onChange={saveName} placeholder="Nombre del libro" className="form-control" />
               <button className="btn btn-primary mx-3" onClick={getBook}>buscar</button>
       </div>
       </div>
@@ -84,7 +104,7 @@ const EspecificBook = () => {
                     </td>
                     <td>{item.name}</td>
                     <td>{item.autor}</td>
-                    <td>
+                    <td className="td-btn">
 
                       < NavLink
                         to={`/admin/loan/${item._id}`}
@@ -92,8 +112,8 @@ const EspecificBook = () => {
                         Prestar
                       </NavLink>
 
-                      <button className="btn btn-info">Editar</button>
-                      <button className="btn btn-danger">Eliminar</button>
+                      <NavLink to={`/admin/edit/${item._id}`} className="btn btn-info">Editar</NavLink>
+                      <button className="btn btn-danger" onClick={() => deleted(item._id)}>Eliminar</button>
                     </td>
                   </tr>
                 ))}

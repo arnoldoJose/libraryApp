@@ -14,10 +14,10 @@ import reservations from '../../Img/asset/calendar_book.png';
 import { useCount  } from '../../Hooks/useCount';
 
 
-
+//`${process.env.REACT_APP_BACKEND}`
 const CaseAdmin = () => {
 
-  const path = `${process.env.REACT_APP_BACKEND}`;
+  const path = "http://localhost:4000";
   const socket = useMemo(() => io.connect(path, {
     transports: ['websocket']
   }),[path]);
@@ -32,7 +32,7 @@ const CaseAdmin = () => {
 
 
   useEffect(() => {
-console.log(path);    
+   
     socket.on('connect',() => {
       socket.on("envio", (data) => {
         Swal.fire(`${data}`, "You clicked the button!", "success");
@@ -58,7 +58,7 @@ console.log(path);
     });
   };
   emitNotifications();
-
+ 
  
   return (
     <Layaout>
