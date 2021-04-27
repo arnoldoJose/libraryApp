@@ -13,11 +13,9 @@ import reservations from '../../Img/asset/calendar_book.png';
 
 import { useCount  } from '../../Hooks/useCount';
 
-
-//`${process.env.REACT_APP_BACKEND}`
 const CaseAdmin = () => {
 
-  const path = "http://localhost:4000";
+  const path = `${process.env.REACT_APP_BACKEND}`;
   const socket = useMemo(() => io.connect(path, {
     transports: ['websocket']
   }),[path]);
