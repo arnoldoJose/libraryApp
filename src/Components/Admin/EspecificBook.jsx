@@ -38,7 +38,10 @@ const EspecificBook = () => {
 
   const eliminatedB = async (id) => {
    await clienteAxios.delete(`delete/book/${id}`);
-    setStatus(true);
+    
+   setTimeout(() => {
+     setStatus(true);
+   },1000);
   }
 
   const deleted = (id) => {
