@@ -39,7 +39,7 @@ const EspecificBook = () => {
   const eliminatedB = async (id) => {
 
     try {
-      await clienteAxios.delete(`delete/book/${id}`);
+      await clienteAxios.post(`delete/book/${id}`);
       setStatus(true);
     } catch (error) {
       console.log(error);
