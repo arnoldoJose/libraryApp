@@ -36,6 +36,11 @@ const EspecificBook = () => {
     }
   }
 
+  const eliminatedB = async (id) => {
+   await clienteAxios.delete(`delete/book/${id}`);
+    setStatus(true);
+  }
+
   const deleted = (id) => {
     Swal.fire({
       title: "Deseas borrar el libro?",
@@ -47,11 +52,8 @@ const EspecificBook = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        clienteAxios.delete(`delete/book/${id}`);
-
+        eliminatedB(id);
         Swal.fire("Eliminado!", "El libro a sido eliminado.", "success");
-       
-        setStatus(true);
       }
     });
   };  
