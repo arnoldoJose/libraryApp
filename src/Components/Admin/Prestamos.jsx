@@ -8,17 +8,25 @@ import clienteAxios from '../../Config/config';
 const Prestamos = () => {
   
   const [loans, saveLoans] = useState("");
+  const [status,setStatus] = useState(true);
   
   useEffect(() => {
-   const consultarAPI = async () => {
-     let data = await clienteAxios.get("get/loans");
-      saveLoans(data.data);
+   if(status){
+     const consultarAPI = async () => {
+       let data = await clienteAxios.get("get/loans");
+       saveLoans(data.data);
+     }
+     consultarAPI();
+     setStatus(false);
    }
-   consultarAPI();
-  }, []);
+  }, [status]);
 
  
-
+  const deleteLoan = async (id) => {
+    let data = await clienteAxios.post(`delete/loan/${id}`);
+    if(data.status === 200) setStatus(true);
+  }
+ 
   return (
       <Layaout>
       {(!loans) ? <Spinner/> : (
@@ -51,7 +59,7 @@ const Prestamos = () => {
                   <td>{`${item.date_loan}`}</td>
                   <td>{`${item.return_date}`}</td>
                   <td>
-                    <button className="btn btn-danger"><DeleteFilled /></button>
+                    <button className="btn btn-danger" onClick={() => deleteLoan(item._id)}><DeleteFilled /></button>
                   </td>
                 </tr>
               ))}
@@ -65,15 +73,3 @@ const Prestamos = () => {
   );
 }
 export default Prestamos
-/**
- *
-   let fecha = "26/02/2021";
-   let fechNueva = "27/03/2021"
-   let day = new Date().getDate();
-
-   if(day > fecha.split("/")[0] && fechNueva.split("/")[1] > fecha.split("/")[1]){
-     console.log("dedes devolver el libro");
-   }else{
-     console.log("no es fecha para devolver");
-   }
- */

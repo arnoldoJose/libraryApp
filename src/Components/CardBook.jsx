@@ -21,6 +21,7 @@ const CardBook = ({book}) => {
 
   if (!dataLocal()) {
     dataLoan = {
+      book_id: book._id,
       name_user: loanData.name_user,
       mobile_user: loanData.mobile_user,
       image_book: book.book_cover,
@@ -29,6 +30,7 @@ const CardBook = ({book}) => {
     };
   } else {
     dataLoan = {
+      book_id: book._id,
       name_user: name.current.defaultValue,
       mobile_user: phone.current.defaultValue,
       image_book: book.book_cover,

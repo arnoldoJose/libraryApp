@@ -14,7 +14,7 @@ import reservations from '../../Img/asset/calendar_book.png';
 import { useCount  } from '../../Hooks/useCount';
 
 const CaseAdmin = () => {
-
+//`${process.env.REACT_APP_BACKEND}`
   const path = `${process.env.REACT_APP_BACKEND}`;
   const socket = useMemo(() => io.connect(path, {
     transports: ['websocket']
@@ -27,20 +27,19 @@ const CaseAdmin = () => {
     countReservation,
     date,
   } = useCount();
-
-
+  
   useEffect(() => {
-   
+    
     socket.on('connect',() => {
       socket.on("envio", (data) => {
         Swal.fire(`${data}`, "You clicked the button!", "success");
       })
-    })
+    });
   }, [socket]);
 
   const emitNotifications = () => {
     let year = new Date().getFullYear(),
-      month = new Date().getMonth() + 1,
+    month = new Date().getMonth() + 1,
       day = new Date().getDate();
     let fecha = `${year}-${month <= 9 ? "0" + month : month}-${
       day <= 9 ? "0" + day : day
@@ -56,8 +55,11 @@ const CaseAdmin = () => {
     });
   };
   emitNotifications();
- 
- 
+  
+//   if(!countBoook) return null;
+
+//  let numBook = countBoook.reduce((acc,el) => acc + parseInt(el.amount) ,0);
+
   return (
     <Layaout>
     <div className="container-main-admin container">
@@ -70,7 +72,7 @@ const CaseAdmin = () => {
                 </div>
                 <img src={book} alt="book" className="card-img-top" height="200" width="200" />
                 <div className="card-footer text-center">
-                  <h4>{countBoook}</h4>
+                 <h4>{countBoook}</h4>
                 </div>
          </NavLink>
       </div>

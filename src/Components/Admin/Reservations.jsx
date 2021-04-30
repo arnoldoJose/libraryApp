@@ -48,6 +48,11 @@ const Reservations = () => {
     return;
   }
 
+  const deleteReservation = async (id) => {
+    let data = await clienteAxios.post(`delete/loan/${id}`);
+    if(data.status === 200) setStatus(true);
+  }
+
   const handelReservation = (e) => {
     
     let {name,value} = e.target;
@@ -106,7 +111,7 @@ const Reservations = () => {
                       <button className="btn btn-success" onClick={() => changeState(item._id)}><CheckOutlined /></button>
                     </td>
                     <td>
-                      <button className="btn btn-danger"><DeleteFilled /></button>
+                      <button className="btn btn-danger" onClick={() => deleteReservation(item._id)} ><DeleteFilled /></button>
                     </td>
                   </tr>
                 ))}

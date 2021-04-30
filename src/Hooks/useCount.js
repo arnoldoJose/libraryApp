@@ -9,7 +9,6 @@ export const useCount = () => {
     const [countLoans, saveCountLoans] = useState(0);
     const [countReturn, saveCountReturn] = useState(0);
     const [countReservation, saveCountReservations] = useState(0);
-
    
 
   useEffect(() => {
@@ -49,7 +48,8 @@ export const useCount = () => {
         cuartoGet,
       ]);
 
-      saveCountBook(data[0].data.book.length);
+      let numBook = data[0].data.reduce((acc,el) => acc + parseInt(el.amount) ,0);
+      saveCountBook(numBook);
       saveCountLoans(data[1].data.length);
       saveCountReturn(data[2].data.length);
       saveCountReservations(data[3].data.length);

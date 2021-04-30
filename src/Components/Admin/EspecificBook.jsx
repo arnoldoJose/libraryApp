@@ -17,7 +17,7 @@ const EspecificBook = () => {
     if(status){
       const consultarApi = async () => {
         let data = await clienteAxios.get("get/books");
-        saveDatos(data.data.book);
+        saveDatos(data.data);
       }
       consultarApi();
       setStatus(false)
@@ -96,6 +96,7 @@ const EspecificBook = () => {
                   <th scope="col">Imagen</th>
                   <th scope="col">Nombre</th>
                   <th scope="col">Autor</th>
+                  <th scope="col">N.libros</th>
                   <th scope="col">Aciones</th>
                 </tr>
               </thead>
@@ -112,6 +113,7 @@ const EspecificBook = () => {
                     </td>
                     <td>{item.name}</td>
                     <td>{item.autor}</td>
+                    <td>{item.amount}</td>
                     <td className="td-btn">
 
                       < NavLink

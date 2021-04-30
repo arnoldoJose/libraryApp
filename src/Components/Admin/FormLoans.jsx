@@ -55,6 +55,7 @@ const FormLoans = () => {
   const senData = async () => {
    
     dataUser = {
+      book_id: id,
       name_user: dataUser.name_user,
       mobile_user: dataUser.mobile_user,
       image_book: loanAdmin.book_cover,
@@ -67,9 +68,12 @@ const FormLoans = () => {
       return;
     } else {
       let createLoan = await clienteAxios.post("admin/loan", dataUser);
-      console.log(createLoan.data.return_date);
-      if (createLoan.status === 200) {
-        Swal.fire("Prestamo Procesado!", "You clicked the button!", "success");
+  
+      if (createLoan.data.messageCorrect) {
+        Swal.fire(`${createLoan.data.messageCorrect}`, "You clicked the button!", "success");
+      }
+      else{
+        Swal.fire({ icon: "error", title: "Oops...", text: `${createLoan.data.messageError}`, });
       }
     }
     document.querySelector("#form-loan-admin").reset();

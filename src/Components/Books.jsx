@@ -21,7 +21,8 @@ const Books = () => {
     if(status){
       const consultarAPI = async () => {
         let data = await clienteAxios.get("get/books");
-        saveBooks(data.data.book);
+        console.log(data);
+        saveBooks(data.data);
       }
       consultarAPI();
       verifyStatus(false);

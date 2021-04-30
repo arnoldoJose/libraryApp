@@ -58,6 +58,14 @@ const Returns = () => {
      Swal.fire(`El usuario ${name} a sido notificado`, "You clicked the button!", "success");
     }
   }
+
+
+  const deleteReservertion = async (id) => {
+    let data = await clienteAxios.post(`delete/loan/${id}`);
+
+    if(data.status === 200) setStatus(true);
+  }
+
   
   const saveName = (e) => {
     let { name, value } = e.target;
@@ -117,7 +125,7 @@ const Returns = () => {
                     <button className="btn btn-warning" title="enviar aviso" onClick={() => sendMessage(Item.mobile_user,Item.name_user)}><NotificationFilled /></button>
                   </td>
                   <td>
-                    <button className="btn btn-danger"><DeleteFilled /></button>
+                    <button className="btn btn-danger" onClick={() => deleteReservertion(Item._id)} ><DeleteFilled /></button>
                   </td>
                 </tr>
               )) }

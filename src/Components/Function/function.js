@@ -81,11 +81,11 @@ class ValidateForm {
   sendData = async (dataloan) => {
     console.log(dataloan);
     let { name_user, mobile_user, name_book } = dataloan;
-    this.saveDataLocal(name_user, mobile_user, name_book);
-
+    
     let data = await clienteAxios.post("create/loan", dataloan);
     console.log(data);
-    console.log(JSON.parse(localStorage.getItem("data")).name_book);
+    this.saveDataLocal(name_user, mobile_user, name_book);
+    
   };
 }
 
@@ -105,7 +105,10 @@ const callApi = (dataloan) => {
   } else {
     sendData(dataloan);
     Swal.fire("Prestamo Procesado", "You clicked the button!", "success");
-    document.querySelector("#form-loan").reset();
+   
+    if(!localStorage.getItem("data")){
+       document.querySelector("#form-loan").reset();
+   }
   }
 };
 
