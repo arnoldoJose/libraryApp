@@ -79,12 +79,16 @@ class ValidateForm {
   }
 
   sendData = async (dataloan) => {
-    console.log(dataloan);
+
     let { name_user, mobile_user, name_book } = dataloan;
     
     let data = await clienteAxios.post("create/loan", dataloan);
-    console.log(data);
-    this.saveDataLocal(name_user, mobile_user, name_book);
+    if(!data.data.messageError){
+      Swal.fire("Prestamo Procesado", "You clicked the button!", "success");
+      this.saveDataLocal(name_user, mobile_user, name_book);
+    }else{
+      this.showMessage(data.data.messageError);
+    }
     
   };
 }
@@ -104,7 +108,6 @@ const callApi = (dataloan) => {
     showMessage("no puedes prestar el mismo libro");
   } else {
     sendData(dataloan);
-    Swal.fire("Prestamo Procesado", "You clicked the button!", "success");
    
     if(!localStorage.getItem("data")){
        document.querySelector("#form-loan").reset();

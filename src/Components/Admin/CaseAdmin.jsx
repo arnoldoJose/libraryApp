@@ -55,10 +55,6 @@ const CaseAdmin = () => {
     });
   };
   emitNotifications();
-  
-//   if(!countBoook) return null;
-
-//  let numBook = countBoook.reduce((acc,el) => acc + parseInt(el.amount) ,0);
 
   return (
     <Layaout>

@@ -54,8 +54,6 @@ export const useCount = () => {
       saveCountReturn(data[2].data.length);
       saveCountReservations(data[3].data.length);
       setDate(data[2].data)
-      // (tercerGet.data.length);
-      // (segundoGet.data.length);
     };
     call();
   }, []);
@@ -69,7 +67,3 @@ export const useCount = () => {
    date
   };
 };
-
-    // 
-    // 
-    // 
