@@ -11,7 +11,7 @@ const Search = ({ saveBooks, saveMessage }) => {
    const [nameBook,saveNameBook] = useState("");
 
      const handelSubmit = async () => {
-       let data = await clienteAxios.get(`get/book?name=${nameBook.name}`);
+       let data = await clienteAxios.get(`get/book?name=${nameBook.name}&autor=${nameBook.name}`);
        
        if(data.data.message){//mejorar esto!
          saveMessage(data.data.message)
@@ -26,29 +26,33 @@ const Search = ({ saveBooks, saveMessage }) => {
      
      let {name,value} = e.target;
 
-     saveNameBook({
-       ...nameBook,
-       [name]: value
-     });
+     saveNameBook({...nameBook,[name]: value});
 
-     if(value.length >= 3){
+     if (value.length >= 3) {
        handelSubmit();
-    }else if(!value.length){
-      saveMessage("")
-      verifyStatus(true); 
-     }
-   }
+     } else if (!value.length) {
+       saveMessage("")
+       verifyStatus(true);
+     } 
+  }
 
   return (
- <>
-    
-        <div className="input-group">
-          <input type="text" onChange={handelChange} name="name" className="form-control mx-3 search-input-book" placeholder="Buscar Libro" />
-        </div>
-      <input type="button" onClick={handelSubmit} className="btn btn-outline-secondary" value="Buscar" />
-    
- </>
-  )
+    <>
+      <div className="input-group">
+        <input
+          type="text"
+          onChange={handelChange}
+          name="name"
+          className="form-control mx-3 search-input-book"
+          placeholder="Buscar Libro"/>
+      </div>
+      <input
+        type="button"
+       
+        className="btn btn-outline-secondary"
+        value="Buscar"/>
+    </>
+  );
 }
 
 export default Search

@@ -68,7 +68,7 @@ const Header = ({location}) => {
               <ContainerTitle className="title-sistem">
                 <h1>Biblioteca Publica la Merced</h1>
               <p>Totogalpa Madriz</p>
-                {(pathname === "/books") ? null : <Link to={"/books"} className="btn btn-outline-secondary btn-books">Encuentra tu Libro</Link>}
+              <Link to={"/books"} className="btn btn-outline-secondary btn-books">Encuentra tu Libro</Link>
               </ContainerTitle>
             </div>
           </>
