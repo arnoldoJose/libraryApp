@@ -1,6 +1,6 @@
 import React, { useState,useRef } from 'react'
 import {  callApi,  dataLocal } from './Function/function'
-import { getMont,getDate,lastDate } from './Admin/Funtion/FunctionalData'
+import { getMont,getDate,lastDate } from './Function/FunctionalData'
 const CardBook = ({book}) => {
 
  

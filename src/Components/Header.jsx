@@ -58,7 +58,7 @@ const Header = ({location}) => {
           <li><Link to="/libraryApp/"> Inicio</Link> </li>
           <li><Link to="/history">Historia</Link> </li>
           <li><Link to="/authors"> Autores</Link> </li>
-           <li><Link to="/admin/count"> Noticias</Link> </li>
+          <li><Link to="/libraryApp/"> Noticias</Link> </li>
           </ContainerUl>
         </nav>
       {(pathname === "/libraryApp/") ?
