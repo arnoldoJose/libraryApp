@@ -1,20 +1,18 @@
 {
   "files": {
-    "main.css": "/libraryApp/static/css/main.c92ead03.chunk.css",
-    "main.js": "/libraryApp/static/js/main.1bed50af.chunk.js",
-    "main.js.map": "/libraryApp/static/js/main.1bed50af.chunk.js.map",
+    "main.css": "/libraryApp/static/css/main.1a8389fb.chunk.css",
+    "main.js": "/libraryApp/static/js/main.5d314fb8.chunk.js",
+    "main.js.map": "/libraryApp/static/js/main.5d314fb8.chunk.js.map",
     "runtime-main.js": "/libraryApp/static/js/runtime-main.ca526e89.js",
     "runtime-main.js.map": "/libraryApp/static/js/runtime-main.ca526e89.js.map",
     "static/css/2.a61f0ae8.chunk.css": "/libraryApp/static/css/2.a61f0ae8.chunk.css",
-    "static/js/2.64ebc132.chunk.js": "/libraryApp/static/js/2.64ebc132.chunk.js",
-    "static/js/2.64ebc132.chunk.js.map": "/libraryApp/static/js/2.64ebc132.chunk.js.map",
+    "static/js/2.b821d65a.chunk.js": "/libraryApp/static/js/2.b821d65a.chunk.js",
+    "static/js/2.b821d65a.chunk.js.map": "/libraryApp/static/js/2.b821d65a.chunk.js.map",
     "index.html": "/libraryApp/index.html",
     "static/css/2.a61f0ae8.chunk.css.map": "/libraryApp/static/css/2.a61f0ae8.chunk.css.map",
-    "static/css/main.c92ead03.chunk.css.map": "/libraryApp/static/css/main.c92ead03.chunk.css.map",
-    "static/js/2.64ebc132.chunk.js.LICENSE.txt": "/libraryApp/static/js/2.64ebc132.chunk.js.LICENSE.txt",
-    "static/media/book.b142f6fd.png": "/libraryApp/static/media/book.b142f6fd.png",
+    "static/css/main.1a8389fb.chunk.css.map": "/libraryApp/static/css/main.1a8389fb.chunk.css.map",
+    "static/js/2.b821d65a.chunk.js.LICENSE.txt": "/libraryApp/static/js/2.b821d65a.chunk.js.LICENSE.txt",
     "static/media/book.b9aded8b.svg": "/libraryApp/static/media/book.b9aded8b.svg",
-    "static/media/calendar.5c39a158.png": "/libraryApp/static/media/calendar.5c39a158.png",
     "static/media/escritor1.4c767d6d.jpg": "/libraryApp/static/media/escritor1.4c767d6d.jpg",
     "static/media/escritor10.835a46d6.jpg": "/libraryApp/static/media/escritor10.835a46d6.jpg",
     "static/media/escritor11.042ef084.jpg": "/libraryApp/static/media/escritor11.042ef084.jpg",
@@ -31,19 +29,16 @@
     "static/media/escritor9.32a51e8b.jpg": "/libraryApp/static/media/escritor9.32a51e8b.jpg",
     "static/media/escritora12.f8140085.jpg": "/libraryApp/static/media/escritora12.f8140085.jpg",
     "static/media/escritora8.fae1b2c5.jpg": "/libraryApp/static/media/escritora8.fae1b2c5.jpg",
-    "static/media/login.css": "/libraryApp/static/media/fondoL.71386146.jpg",
     "static/media/google-docs.0c73a183.svg": "/libraryApp/static/media/google-docs.0c73a183.svg",
     "static/media/estilonav.css": "/libraryApp/static/media/liback.fd6e697a.jpg",
-    "static/media/logo.1545d1c4.png": "/libraryApp/static/media/logo.1545d1c4.png",
     "static/media/me-gusta.b16558c9.svg": "/libraryApp/static/media/me-gusta.b16558c9.svg",
-    "static/media/speech-bubble.9fdc4542.svg": "/libraryApp/static/media/speech-bubble.9fdc4542.svg",
-    "static/media/user.d54b5cea.png": "/libraryApp/static/media/user.d54b5cea.png"
+    "static/media/speech-bubble.9fdc4542.svg": "/libraryApp/static/media/speech-bubble.9fdc4542.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.ca526e89.js",
     "static/css/2.a61f0ae8.chunk.css",
-    "static/js/2.64ebc132.chunk.js",
-    "static/css/main.c92ead03.chunk.css",
-    "static/js/main.1bed50af.chunk.js"
+    "static/js/2.b821d65a.chunk.js",
+    "static/css/main.1a8389fb.chunk.css",
+    "static/js/main.5d314fb8.chunk.js"
   ]
 }
