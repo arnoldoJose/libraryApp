@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/libraryApp/static/css/main.4e495030.css",
+    "main.js": "/libraryApp/static/js/main.5b036d4b.js",
+    "static/js/498.96201b53.chunk.js": "/libraryApp/static/js/498.96201b53.chunk.js",
+    "static/js/703.136735f3.chunk.js": "/libraryApp/static/js/703.136735f3.chunk.js",
+    "static/js/142.12acdcbb.chunk.js": "/libraryApp/static/js/142.12acdcbb.chunk.js",
+    "static/js/377.73b0569a.chunk.js": "/libraryApp/static/js/377.73b0569a.chunk.js",
+    "static/media/fondoL.jpg": "/libraryApp/static/media/fondoL.7138614654d80a681e0d.jpg",
+    "static/media/logo.png": "/libraryApp/static/media/logo.1545d1c4cadc0438dcba.png",
+    "static/media/user.png": "/libraryApp/static/media/user.d54b5cea3dabfb92c990.png",
+    "static/media/calendar.png": "/libraryApp/static/media/calendar.5c39a158c89f2f1d73e9.png",
+    "static/media/book.png": "/libraryApp/static/media/book.b142f6fdec32238f1d95.png",
+    "index.html": "/libraryApp/index.html",
+    "main.4e495030.css.map": "/libraryApp/static/css/main.4e495030.css.map",
+    "main.5b036d4b.js.map": "/libraryApp/static/js/main.5b036d4b.js.map",
+    "498.96201b53.chunk.js.map": "/libraryApp/static/js/498.96201b53.chunk.js.map",
+    "703.136735f3.chunk.js.map": "/libraryApp/static/js/703.136735f3.chunk.js.map",
+    "142.12acdcbb.chunk.js.map": "/libraryApp/static/js/142.12acdcbb.chunk.js.map",
+    "377.73b0569a.chunk.js.map": "/libraryApp/static/js/377.73b0569a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4e495030.css",
+    "static/js/main.5b036d4b.js"
+  ]
+}
