@@ -1,18 +1,32 @@
-import React from 'react'
+import React, {useState,useEffect} from 'react'
 
 import Spinner from '../../../Styled/Spinner';
 import { dataReport } from '../Funtion/dataReport';
 import { generateReport } from '../../../Hooks/printPdf';
+import clienteAxios from '../../../Config/config';
 
 const ReportPrincipal = () => {
 
   let { allBook, allLoans, allReturns, allReservation } = dataReport();
 
+  const [loans, saveLoans] = useState([]);
+  const [status,setStatus] = useState(true);
+  useEffect(() => {
+    if(status){
+      const consultarAPI = async () => {
+        let data = await clienteAxios.get("get/loans");
+        saveLoans(data.data);
+      }
+      consultarAPI();
+      setStatus(false);
+    }
+   }, [status]);
+ 
 
   return (
     <>
     {
-      (!allBook) ? <Spinner/>
+          (!loans.length) ? <Spinner/> 
       : 
       (
         <div className="container-loan-table" >
@@ -25,35 +39,33 @@ const ReportPrincipal = () => {
           <div className="table">
             <table className="table table-success table-striped" id="miTable1">
               <thead>
-                <tr className="tr">
-                  <th scope="col">Datos</th>
-                  <th scope="col">Total</th>
-
-                </tr>
+              <tr>
+                <th scope="col" style={{color: 'black'}}>Nombre</th>
+                <th scope="col" style={{color: 'black'}}>Nombre Usuario</th>
+                <th scope="col" style={{color: 'black'}}>Telefono Usuario</th>
+                <th scope="col" style={{color: 'black'}}>Fecha Prestamo</th>
+                <th scope="col" style={{color: 'black'}}>Fecha Devolucion</th>
+                <th scope="col" style={{color: 'black'}}>Estado</th>
+              </tr>
               </thead>
-              <tbody>
-                <tr className="tr-data">
-                  <th scope="row">Libros</th>
-                  <td>{allBook}</td>
-
+              <tbody >
+              {loans.map((item) => (
+                <tr key={`${item._id}`} className="tr-data">
+                 
+                  <td>{`${item.name_book}`}</td>
+                  <td>{`${item.name_user}`}</td>
+                  <td>{`${item.mobile_user}`}</td>
+                  <td>{`${item.date_loan}`}</td>
+                  <td>{`${item.return_date}`}</td>
+                  {(item.return_state === "assigned") ? 
+                    (<td className="return">Devuelto</td>)
+                    :
+                    (<td className="notreturn">No devuelto</td>)
+                  }
+               
                 </tr>
-                <tr className="tr-data">
-                  <th scope="row">Prestamos</th>
-                  <td>{allLoans}</td>
-
-                </tr>
-                <tr className="tr-data">
-                  <th scope="row">Devoluciones Pendientes</th>
-                  <td>{allReturns}</td>
-
-                </tr>
-                <tr className="tr-data">
-                  <th scope="row">Reservaciones</th>
-                  <td>{allReservation}</td>
-
-                </tr>
-
-              </tbody>
+              ))}
+            </tbody>
 
             </table>
           </div>

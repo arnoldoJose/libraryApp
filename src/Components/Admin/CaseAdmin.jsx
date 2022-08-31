@@ -7,7 +7,8 @@ import Layaout from './Layaout';
 import Swal from 'sweetalert2';
 
 import { useCount } from '../../Hooks/useCount';
-import { useSocket } from '../../Hooks/useSocket'
+import { useSocket } from '../../Hooks/useSocket';
+import toas, { Toaster } from 'react-hot-toast'
 
 import book from '../../Img/asset/book.png';
 import loans from '../../Img/asset/calendar.png';
@@ -15,15 +16,17 @@ import clock from '../../Img/asset/clock.png';
 import reservations from '../../Img/asset/calendar_book.png';
 
 
+
 const CaseAdmin = () => {
 //'http://localhost:4000'
-  const {  socket } = useSocket(process.env.REACT_APP_BACKEND);
+  const {  socket } = useSocket('http://localhost:4000');
   
   const {countBoook,countLoans,countReturn,countReservation,date,setStatus,status} = useCount();
 
   useEffect(() => {
     socket.on("connect", () => {
       socket.on("envio", (data) => {
+        
         Swal.fire(`${data}`, "You clicked the button!", "success");
         setStatus(true);
       });
@@ -32,7 +35,13 @@ const CaseAdmin = () => {
         Swal.fire(`${data}`, "You clicked the button!", "success");
         setStatus(true);
       });
+
+      socket.on('devolucion',(data) => {
+        Swal.fire(`${data}`, "You clicked the button!", "success");
+        setStatus(true);
+      })
     });
+
   }, [socket,status]);
   
   const emitNotifications = () => {
@@ -47,7 +56,7 @@ const CaseAdmin = () => {
     date.forEach((Item) => {
       if (fecha.indexOf(Item.return_date) !== -1) {
         setTimeout(() => {
-          alert(`devoluciones pendientes hoy ${fecha} `);
+          toas.error(`devoluciones pendientes hoy ${fecha} `);
         }, 1000);
       }
     });
@@ -57,6 +66,7 @@ const CaseAdmin = () => {
   return (
     <Layaout>
     <div className="container-main-admin container">
+      <Toaster/>
      <div className="col-12  p-3 element-card-admin">
        <div className="col-sm-5 col-md-4 col-lg-2 element-image-admin">
          <div className="card">

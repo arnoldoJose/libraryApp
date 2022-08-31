@@ -54,7 +54,7 @@ const Returns = () => {
   // }
   
   const sendMessage = async (mobil,name) => {
-   let data = await clienteAxios.post(`send/message?phone=${mobil}&dev='dev'`);
+   let data = await clienteAxios.post(`send/message?phone=${mobil}&dev='dev'&name=${name}`);
    if(data.status === 200){
      Swal.fire(`El usuario ${name} a sido notificado`, "You clicked the button!", "success");
     }
